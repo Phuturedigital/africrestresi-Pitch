@@ -1,0 +1,7 @@
+node_modules/
+docs/
+package.json
+package-lock.json
+replace-images.sh
+*.bak
+.DS_Store
