@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Buildings — Africrest Properties</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+  .result-count { font-size: 14px; color: var(--muted); }
+  .result-count strong { color: var(--ink); font-weight: 600; }
+  .sort-select { padding: 8px 14px; border: 1px solid var(--line); border-radius: 2px; background: #fff; font-family: inherit; font-size: 13px; color: var(--ink); }
+  .map-link { font-size: 13px; color: var(--ink); display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 2px; transition: all .15s; }
+  .map-link:hover { border-color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="demo-banner"><strong>Demo preview</strong> · Concept site by Phuture Digital · Real building data, illustrative photography, sample availability</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">A</span>Africrest <span class="logo-sub">PROPERTIES</span></a>
+    <div class="nav-links">
+      <a href="buildings.html" class="active">Buildings</a>
+      <a href="units.html">Available units</a>
+      <a href="apply.html">How to apply</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html" class="nav-cta">Apply now</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="crumb"><a href="index.html">Home</a> <span class="sep">/</span> Buildings</div>
+    <h1>15 buildings.<br/><em>One standard.</em></h1>
+    <p class="lead">Every Africrest estate is built, owned and managed by us. Same security, same service, same value. Filter by area or browse them all.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="section-inner">
+
+    <div class="filters" id="area-filters">
+      <button class="chip active" data-area="all">All areas <span class="count">15</span></button>
+      <button class="chip" data-area="Sandton">Sandton <span class="count">4</span></button>
+      <button class="chip" data-area="Bryanston">Bryanston <span class="count">2</span></button>
+      <button class="chip" data-area="Sunninghill">Sunninghill <span class="count">2</span></button>
+      <button class="chip" data-area="Ferndale">Ferndale <span class="count">2</span></button>
+      <button class="chip" data-area="Waverley">Waverley <span class="count">1</span></button>
+      <button class="chip" data-area="Oaklands">Oaklands <span class="count">1</span></button>
+      <button class="chip" data-area="Milpark">Milpark <span class="count">1</span></button>
+      <button class="chip" data-area="Marshalltown">Marshalltown <span class="count">1</span></button>
+      <button class="chip" data-area="Bramley">Bramley <span class="count">1</span></button>
+    </div>
+
+    <div class="toolbar">
+      <div class="result-count">Showing <strong id="count">15</strong> buildings</div>
+      <div style="display: flex; gap: 10px;">
+        <a href="#" class="map-link">View on map</a>
+        <select class="sort-select">
+          <option>Sort: Featured</option>
+          <option>Price: low to high</option>
+          <option>Price: high to low</option>
+          <option>Most available units</option>
+          <option>Newest</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="building-grid" id="grid">
+      <!-- Sandton (4) -->
+      <a href="building.html" class="b-card" data-area="Sandton"><div class="b-img"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600" alt=""><span class="b-badge">New</span><span class="b-area-tag">Sandton</span></div>
+        <div class="b-body"><div class="b-name">The Maestro</div><div class="b-addr">155 5th Street</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R7,190</strong></div><span class="b-avail hot">4 available</span></div></div></a>
+
+      <a href="building.html" class="b-card" data-area="Sandton"><div class="b-img"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600" alt=""><span class="b-badge">New</span><span class="b-area-tag">Sandton</span></div>
+        <div class="b-body"><div class="b-name">The Astra</div><div class="b-addr">166 Grayston Drive</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R6,390</strong></div><span class="b-avail">2 available</span></div></div></a>
+
+      <a href="building.html" class="b-card" data-area="Sandton"><div class="b-img"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&hue=20" alt=""><span class="b-area-tag">Sandton</span></div>
+        <div class="b-body"><div class="b-name">The Prestige</div><div class="b-addr">1 Charles Crescent</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R6,190</strong></div><span class="b-avail">3 available</span></div></div></a>
+
+      <a href="building.html" class="b-card" data-area="Sandton"><div class="b-img"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600&sat=-30" alt=""><span class="b-area-tag">Sandton</span></div>
+        <div class="b-body"><div class="b-name">The Maverick</div><div class="b-addr">44 Norwich Cl</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R6,490</strong></div><span class="b-avail">5 available</span></div></div></a>
+
+      <!-- Bryanston (2) -->
+      <a href="building.html" class="b-card" data-area="Bryanston"><div class="b-img"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600" alt=""><span class="b-area-tag">Bryanston</span></div>
+        <div class="b-body"><div class="b-name">The Galileo</div><div class="b-addr">23 Hobart Road</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R6,590</strong></div><span class="b-avail">3 available</span></div></div></a>
+
+      <a href="building.html" class="b-card" data-area="Bryanston"><div class="b-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600" alt=""><span class="b-area-tag">Bryanston</span></div>
+        <div class="b-body"><div class="b-name">The Encore</div><div class="b-addr">13 Sloane Street</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R6,590</strong></div><span class="b-avail zero">Waitlist only</span></div></div></a>
+
+      <!-- Sunninghill (2) -->
+      <a href="building.html" class="b-card" data-area="Sunninghill"><div class="b-img"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600" alt=""><span class="b-badge">New</span><span class="b-area-tag">Sunninghill</span></div>
+        <div class="b-body"><div class="b-name">The Silo</div><div class="b-addr">18 Eglin Road</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R5,590</strong></div><span class="b-avail hot">6 available</span></div></div></a>
+
+      <a href="building.html" class="b-card" data-area="Sunninghill"><div class="b-img"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&sat=-20" alt=""><span class="b-area-tag">Sunninghill</span></div>
+        <div class="b-body"><div class="b-name">The Eclipse</div><div class="b-addr">15 Simba Rd</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R5,790</strong></div><span class="b-avail">4 available</span></div></div></a>
+
+      <!-- Ferndale (2) -->
+      <a href="building.html" class="b-card" data-area="Ferndale"><div class="b-img"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600" alt=""><span class="b-area-tag">Ferndale</span></div>
+        <div class="b-body"><div class="b-name">The Landmark</div><div class="b-addr">354 Kent Ave</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R6,090</strong></div><span class="b-avail">2 available</span></div></div></a>
+
+      <a href="building.html" class="b-card" data-area="Ferndale"><div class="b-img"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&sat=-15" alt=""><span class="b-area-tag">Ferndale</span></div>
+        <div class="b-body"><div class="b-name">The Titan</div><div class="b-addr">291 Surrey Ave</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R5,590</strong></div><span class="b-avail">3 available</span></div></div></a>
+
+      <!-- Waverley (1) -->
+      <a href="building.html" class="b-card" data-area="Waverley"><div class="b-img"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600&hue=10" alt=""><span class="b-badge">New</span><span class="b-area-tag">Waverley</span></div>
+        <div class="b-body"><div class="b-name">The Georgia</div><div class="b-addr">1 Scott St</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R7,090</strong></div><span class="b-avail hot">5 available</span></div></div></a>
+
+      <!-- Oaklands (1) -->
+      <a href="building.html" class="b-card" data-area="Oaklands"><div class="b-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&sat=-25" alt=""><span class="b-area-tag">Oaklands</span></div>
+        <div class="b-body"><div class="b-name">The Legacy</div><div class="b-addr">12 Spring Rd</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R5,890</strong></div><span class="b-avail">2 available</span></div></div></a>
+
+      <!-- Milpark (1) -->
+      <a href="building.html" class="b-card" data-area="Milpark"><div class="b-img"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&sat=-10" alt=""><span class="b-area-tag">Milpark</span></div>
+        <div class="b-body"><div class="b-name">Stanley Studios</div><div class="b-addr">39 Stanley Ave</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R6,790</strong></div><span class="b-avail">3 available</span></div></div></a>
+
+      <!-- Marshalltown (1) -->
+      <a href="building.html" class="b-card" data-area="Marshalltown"><div class="b-img"><img src="https://images.unsplash.com/photo-1515263487990-61b07816b324?w=600" alt=""><span class="b-area-tag">Marshalltown</span></div>
+        <div class="b-body"><div class="b-name">The Leo</div><div class="b-addr">162 Anderson Street</div>
+          <div class="b-row"><div class="b-price"><small>From</small><strong>R3,990</strong></div><span class="b-avail hot">8 available</span></div></div></a>
+
+      <!-- Bramley (1) -->
+      <a href="building.html" class="b-card" data-area="Bramley"><div class="b-img"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&hue=20" alt=""><span class="b-area-tag">Bramley</span></div>
+        <div class="b-body"><div class="b-name">The Village</div><div class="b-addr">39 High Rd</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R5,690</strong></div><span class="b-avail">4 available</span></div></div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div>
+      <a href="index.html" class="logo foot-logo"><span class="logo-mark">A</span>Africrest <span class="logo-sub">PROPERTIES</span></a>
+      <p style="max-width: 320px; line-height: 1.7;">15 lifestyle estates across Johannesburg. Built, owned and managed by Africrest.</p>
+    </div>
+    <div><h4>Buildings</h4><ul><li><a href="buildings.html">All buildings</a></li><li><a href="buildings.html">Sandton (4)</a></li><li><a href="buildings.html">Bryanston (2)</a></li><li><a href="buildings.html">Other areas</a></li></ul></div>
+    <div><h4>Renters</h4><ul><li><a href="units.html">Available units</a></li><li><a href="apply.html">How to apply</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="#">Careers</a></li></ul></div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Africrest Properties.</span><span>POPIA · Terms · Privacy</span></div>
+</footer>
+
+<script>
+  const filters = document.getElementById('area-filters');
+  const grid = document.getElementById('grid');
+  const count = document.getElementById('count');
+  filters.addEventListener('click', e => {
+    if (!e.target.classList.contains('chip')) return;
+    filters.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    e.target.classList.add('active');
+    const area = e.target.dataset.area;
+    let visible = 0;
+    grid.querySelectorAll('.b-card').forEach(card => {
+      if (area === 'all' || card.dataset.area === area) { card.style.display = ''; visible++; }
+      else { card.style.display = 'none'; }
+    });
+    count.textContent = visible;
+  });
+</script>
+</body>
+</html>

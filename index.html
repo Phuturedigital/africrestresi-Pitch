@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Africrest Properties — Find your home in Joburg</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative; min-height: 560px;
+    background: linear-gradient(180deg, rgba(15,46,42,0.55), rgba(15,46,42,0.75)),
+                url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600') center/cover;
+    color: #fff;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 60px 32px 40px;
+  }
+  .hero-inner { max-width: 1280px; margin: 0 auto; width: 100%; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 5vw, 68px); font-weight: 500; line-height: 1.05; max-width: 720px; letter-spacing: -0.01em; }
+  .hero h1 em { font-style: italic; color: var(--gold-soft); }
+  .hero p.lead { margin-top: 18px; max-width: 560px; font-size: 16px; line-height: 1.6; opacity: 0.92; }
+  .search-bar {
+    margin-top: 36px; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px);
+    border-radius: 4px; padding: 8px;
+    display: grid; grid-template-columns: 1.3fr 1fr 1fr auto;
+    gap: 8px; max-width: 820px; color: var(--ink);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+  }
+  .search-field { padding: 14px 16px; border-right: 1px solid var(--line); }
+  .search-field:last-of-type { border-right: none; }
+  .search-field label { display: block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .search-field select { border: none; outline: none; background: none; font-family: inherit; font-size: 15px; font-weight: 500; color: var(--ink); width: 100%; padding: 0; }
+  .search-submit { background: var(--gold); color: var(--ink); padding: 0 28px; border-radius: 2px; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; transition: background .15s; }
+  .search-submit:hover { background: var(--gold-soft); }
+  .hero-meta { margin-top: 22px; display: flex; gap: 28px; font-size: 13px; opacity: 0.85; flex-wrap: wrap; }
+  .hero-meta span::before { content: '— '; color: var(--gold); }
+
+  /* value strip */
+  .value-strip { background: var(--cream); padding: 56px 32px; border-bottom: 1px solid var(--line); }
+  .value-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; }
+  .value-cell h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--ink); margin-bottom: 8px; font-weight: 500; }
+  .value-cell .num { font-family: 'Cormorant Garamond', serif; font-size: 42px; color: var(--gold); line-height: 1; margin-bottom: 12px; font-weight: 500; }
+  .value-cell p { font-size: 14px; line-height: 1.6; color: var(--muted); }
+
+  .units-band { background: var(--ink); color: #fff; padding: 80px 32px; }
+  .units-band h2 { color: #fff; }
+  .units-band .section-head p { color: rgba(255,255,255,0.65); }
+  .units-band .filters { border-bottom-color: rgba(255,255,255,0.1); }
+  .units-foot { margin-top: 36px; text-align: center; }
+
+  .apply-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 28px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .a-step { padding: 32px 28px; border-right: 1px solid var(--line); position: relative; }
+  .a-step:last-child { border-right: none; }
+  .a-num { font-family: 'Cormorant Garamond', serif; font-size: 56px; color: var(--gold); line-height: 1; font-weight: 500; }
+  .a-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; margin-top: 12px; font-weight: 500; }
+  .a-desc { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+  .a-time { display: inline-block; margin-top: 14px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); border: 1px solid var(--line); padding: 4px 10px; border-radius: 2px; }
+  .apply-cta { margin-top: 36px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+  .about-strip { display: grid; grid-template-columns: 1.1fr 1fr; background: var(--cream); }
+  .about-text { padding: 80px 64px; }
+  .about-text .label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+  .about-text h2 { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500; line-height: 1.05; margin-top: 12px; color: var(--ink); }
+  .about-text p { font-size: 15px; line-height: 1.75; color: var(--muted); margin-top: 16px; max-width: 480px; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; margin-top: 32px; gap: 0; max-width: 480px; border-top: 1px solid var(--line); padding-top: 24px; }
+  .stat .n { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: var(--ink); font-weight: 500; }
+  .stat .l { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .about-img { background: url('https://images.unsplash.com/photo-1567496898669-ee935f5f647a?w=900') center/cover; min-height: 480px; }
+
+  @media (max-width: 980px) {
+    .value-inner { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .apply-grid { grid-template-columns: repeat(2, 1fr); }
+    .a-step:nth-child(2) { border-right: none; }
+    .about-strip { grid-template-columns: 1fr; }
+    .about-text { padding: 56px 32px; }
+    .about-img { min-height: 320px; }
+    .search-bar { grid-template-columns: 1fr 1fr; }
+    .search-submit { grid-column: 1 / -1; padding: 14px; }
+  }
+  @media (max-width: 640px) {
+    .apply-grid, .value-inner { grid-template-columns: 1fr; }
+    .a-step { border-right: none; border-bottom: 1px solid var(--line); }
+    .a-step:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner"><strong>Demo preview</strong> · Concept site by Phuture Digital · Real building data, illustrative photography, sample availability</div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">A</span>
+      Africrest <span class="logo-sub">PROPERTIES</span>
+    </a>
+    <div class="nav-links">
+      <a href="buildings.html">Buildings</a>
+      <a href="units.html">Available units</a>
+      <a href="apply.html">How to apply</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html" class="nav-cta">Apply now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Find your next home in <em>Joburg</em>.<br/>15 buildings. One standard.</h1>
+    <p class="lead">Africrest builds, owns and manages every estate we offer. Search live availability across Sandton, Bryanston, Sunninghill, Ferndale and more.</p>
+
+    <div class="search-bar">
+      <div class="search-field">
+        <label>Area</label>
+        <select>
+          <option>All areas (9)</option>
+          <option>Sandton</option><option>Bryanston</option><option>Sunninghill</option>
+          <option>Ferndale</option><option>Waverley</option><option>Oaklands</option>
+          <option>Milpark</option><option>Marshalltown</option><option>Bramley</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>Bedrooms</label>
+        <select><option>Any</option><option>Studio</option><option>Bachelor</option><option>1 bedroom</option><option>2 bedroom</option></select>
+      </div>
+      <div class="search-field">
+        <label>Max rent</label>
+        <select><option>Up to R7,500</option><option>Up to R5,000</option><option>Up to R6,000</option><option>Up to R7,000</option></select>
+      </div>
+      <a href="units.html" class="search-submit" style="display:flex; align-items:center; justify-content:center;">Search units</a>
+    </div>
+    <div class="hero-meta">
+      <span>9/10 tenants would recommend us</span>
+      <span>Joburg's largest built-to-rent portfolio</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VALUE STRIP ============ -->
+<section class="value-strip">
+  <div class="value-inner">
+    <div class="value-cell"><div class="num">15</div><h3>Built. Owned. Managed.</h3><p>We don't sell apartments — every estate stays under our care. On-site teams handle issues in under 24 hours.</p></div>
+    <div class="value-cell"><div class="num">5</div><h3>Things we get right</h3><p>Security, value-for-money, service, facilities, location. Every building delivers all five.</p></div>
+    <div class="value-cell"><div class="num">9</div><h3>Joburg areas</h3><p>From Sandton to Marshalltown — move between our buildings mid-lease, free of penalty.</p></div>
+    <div class="value-cell"><div class="num">9/10</div><h3>Tenants recommend us</h3><p>Survey of 1,000+ residents. Lease renewal rates well above industry average.</p></div>
+  </div>
+</section>
+
+<!-- ============ BUILDINGS ============ -->
+<section id="buildings" class="section">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <h2>Our buildings</h2>
+        <p>15 estates across Joburg, all delivering the same value. Filter by area or browse them all.</p>
+      </div>
+      <a href="buildings.html" style="font-size: 13px; color: var(--ink); text-decoration: underline;">View all 15 →</a>
+    </div>
+
+    <div class="building-grid">
+      <a href="building.html" class="b-card">
+        <div class="b-img"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600" alt="The Maestro"><span class="b-badge">New</span><span class="b-area-tag">Sandton</span></div>
+        <div class="b-body"><div class="b-name">The Maestro</div><div class="b-addr">155 5th Street</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R7,190</strong></div><span class="b-avail hot">4 units available</span></div>
+        </div>
+      </a>
+      <a href="building.html" class="b-card">
+        <div class="b-img"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600" alt="The Astra"><span class="b-badge">New</span><span class="b-area-tag">Sandton</span></div>
+        <div class="b-body"><div class="b-name">The Astra</div><div class="b-addr">166 Grayston Drive</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R6,390</strong></div><span class="b-avail">2 units available</span></div>
+        </div>
+      </a>
+      <a href="building.html" class="b-card">
+        <div class="b-img"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600" alt="The Galileo"><span class="b-area-tag">Bryanston</span></div>
+        <div class="b-body"><div class="b-name">The Galileo</div><div class="b-addr">23 Hobart Road</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R6,590</strong></div><span class="b-avail">3 units available</span></div>
+        </div>
+      </a>
+      <a href="building.html" class="b-card">
+        <div class="b-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600" alt="The Encore"><span class="b-area-tag">Bryanston</span></div>
+        <div class="b-body"><div class="b-name">The Encore</div><div class="b-addr">13 Sloane Street</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R6,590</strong></div><span class="b-avail zero">Waitlist only</span></div>
+        </div>
+      </a>
+      <a href="building.html" class="b-card">
+        <div class="b-img"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600" alt="The Silo"><span class="b-badge">New</span><span class="b-area-tag">Sunninghill</span></div>
+        <div class="b-body"><div class="b-name">The Silo</div><div class="b-addr">18 Eglin Road</div>
+          <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R5,590</strong></div><span class="b-avail hot">6 units available</span></div>
+        </div>
+      </a>
+      <a href="building.html" class="b-card">
+        <div class="b-img"><img src="https://images.unsplash.com/photo-1515263487990-61b07816b324?w=600" alt="The Leo"><span class="b-area-tag">Marshalltown</span></div>
+        <div class="b-body"><div class="b-name">The Leo</div><div class="b-addr">162 Anderson Street</div>
+          <div class="b-row"><div class="b-price"><small>From</small><strong>R3,990</strong></div><span class="b-avail hot">8 units available</span></div>
+        </div>
+      </a>
+    </div>
+
+    <div style="text-align: center; margin-top: 32px;">
+      <a href="buildings.html" class="btn btn-outline-dark">View all 15 buildings →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AVAILABLE UNITS ============ -->
+<section id="units" class="units-band">
+  <div class="section-inner">
+    <div class="section-head">
+      <div><h2>Available this week</h2><p>Live availability across all our buildings. Updated daily.</p></div>
+      <div style="font-size: 13px; color: rgba(255,255,255,0.65);">Last updated 2 hours ago</div>
+    </div>
+
+    <div class="filters">
+      <button class="chip chip-dark active">All units</button>
+      <button class="chip chip-dark">Studio</button>
+      <button class="chip chip-dark">Bachelor</button>
+      <button class="chip chip-dark">1 bedroom</button>
+      <button class="chip chip-dark">2 bedroom</button>
+    </div>
+
+    <div class="unit-grid">
+      <a href="unit.html" class="u-card">
+        <div class="u-img"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400" alt="Unit"><span class="u-tag">Move-in ready</span></div>
+        <div class="u-body"><div class="u-name">The Maestro · Sandton</div><div class="u-type">1 Bedroom · #304</div>
+          <div class="u-meta"><span>42m²</span><span>3rd floor</span><span>North-facing</span></div>
+          <div class="u-foot"><div class="u-rent">R7,190<small>/mo</small></div><span class="u-cta">View →</span></div>
+        </div>
+      </a>
+      <a href="unit.html" class="u-card">
+        <div class="u-img"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400" alt="Unit"><span class="u-tag">Available 1 Jun</span></div>
+        <div class="u-body"><div class="u-name">The Silo · Sunninghill</div><div class="u-type">Studio · #208</div>
+          <div class="u-meta"><span>28m²</span><span>2nd floor</span><span>Balcony</span></div>
+          <div class="u-foot"><div class="u-rent">R5,590<small>/mo</small></div><span class="u-cta">View →</span></div>
+        </div>
+      </a>
+      <a href="unit.html" class="u-card">
+        <div class="u-img"><img src="https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=400" alt="Unit"><span class="u-tag">Move-in ready</span></div>
+        <div class="u-body"><div class="u-name">The Leo · Marshalltown</div><div class="u-type">Bachelor · #512</div>
+          <div class="u-meta"><span>32m²</span><span>5th floor</span><span>City view</span></div>
+          <div class="u-foot"><div class="u-rent">R3,990<small>/mo</small></div><span class="u-cta">View →</span></div>
+        </div>
+      </a>
+      <a href="unit.html" class="u-card">
+        <div class="u-img"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400" alt="Unit"><span class="u-tag">2 left</span></div>
+        <div class="u-body"><div class="u-name">The Galileo · Bryanston</div><div class="u-type">1 Bedroom · #115</div>
+          <div class="u-meta"><span>48m²</span><span>1st floor</span><span>Garden</span></div>
+          <div class="u-foot"><div class="u-rent">R6,790<small>/mo</small></div><span class="u-cta">View →</span></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="units-foot">
+      <a href="units.html" class="btn btn-outline-gold">Browse all available units →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW TO APPLY ============ -->
+<section id="apply" class="section" style="background: var(--paper);">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <h2>How to move in</h2>
+        <p>The 11-step process collapsed into 4 phases. Most tenants are signed and approved within 5 business days.</p>
+      </div>
+    </div>
+
+    <div class="apply-grid">
+      <div class="a-step"><div class="a-num">01</div><div class="a-title">Enquire & view</div><div class="a-desc">Pick a unit, enquire online, walk in for a viewing. Weekdays 9–6, Saturdays 9–2.</div><span class="a-time">Same week</span></div>
+      <div class="a-step"><div class="a-num">02</div><div class="a-title">Apply</div><div class="a-desc">Personalised application form sent after your viewing. Upload your docs once. We process in 1–2 business days.</div><span class="a-time">1–2 days</span></div>
+      <div class="a-step"><div class="a-num">03</div><div class="a-title">Sign & pay</div><div class="a-desc">Approved? Sign your digital lease and pay your deposit. Your unit is reserved the moment we receive POP.</div><span class="a-time">Same day</span></div>
+      <div class="a-step"><div class="a-num">04</div><div class="a-title">Move in</div><div class="a-desc">On-site key handover, fingerprint setup, apartment inspection, welcome pack. Done.</div><span class="a-time">On lease date</span></div>
+    </div>
+
+    <div class="apply-cta">
+      <a href="apply.html" class="btn btn-dark">Start your application</a>
+      <a href="apply.html" class="btn btn-ghost">Read the full 11-step breakdown →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT STRIP ============ -->
+<section id="about" class="about-strip">
+  <div class="about-text">
+    <span class="label">About Africrest</span>
+    <h2>We don't sell what we build.</h2>
+    <p>Most developers cash out and walk away. Africrest doesn't. We design, build, own and manage every estate — which is why our facilities are the ones residents actually use, not show-home dressing.</p>
+    <p>Our above-industry-average lease renewal rates aren't a marketing line. They're the only number that matters in residential property, and they're the reason 9 out of 10 of our tenants would recommend us to a friend.</p>
+    <div class="about-stats">
+      <div class="stat"><div class="n">15</div><div class="l">Estates</div></div>
+      <div class="stat"><div class="n">1,000+</div><div class="l">Residents surveyed</div></div>
+      <div class="stat"><div class="n">24h</div><div class="l">Maintenance response</div></div>
+    </div>
+    <div style="margin-top: 28px;"><a href="about.html" class="btn btn-outline-dark">Read our story →</a></div>
+  </div>
+  <div class="about-img"></div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact">
+  <div class="foot-inner">
+    <div>
+      <a href="index.html" class="logo foot-logo">
+        <span class="logo-mark">A</span>
+        Africrest <span class="logo-sub">PROPERTIES</span>
+      </a>
+      <p style="max-width: 320px; line-height: 1.7;">15 lifestyle estates across Johannesburg. Built, owned and managed by Africrest.</p>
+      <div style="margin-top: 18px;">
+        <a href="#">Instagram</a> · <a href="#">Facebook</a> · <a href="#">YouTube</a> · <a href="#">LinkedIn</a>
+      </div>
+    </div>
+    <div><h4>Buildings</h4><ul>
+      <li><a href="buildings.html">All buildings</a></li>
+      <li><a href="buildings.html">Sandton (5)</a></li>
+      <li><a href="buildings.html">Bryanston (2)</a></li>
+      <li><a href="buildings.html">Sunninghill (2)</a></li>
+      <li><a href="buildings.html">Other areas</a></li>
+    </ul></div>
+    <div><h4>Renters</h4><ul>
+      <li><a href="units.html">Available units</a></li>
+      <li><a href="apply.html">How to apply</a></li>
+      <li><a href="apply.html">Lease FAQ</a></li>
+      <li><a href="contact.html">Contact us</a></li>
+    </ul></div>
+    <div><h4>Company</h4><ul>
+      <li><a href="about.html">About Africrest</a></li>
+      <li><a href="#">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul></div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Africrest Properties. All rights reserved.</span>
+    <span>POPIA · Terms · Privacy</span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.filters').forEach(group => {
+    group.addEventListener('click', e => {
+      if (!e.target.classList.contains('chip')) return;
+      group.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      e.target.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

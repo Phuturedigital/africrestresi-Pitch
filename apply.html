@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to apply — Africrest Properties</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* 4-phase summary */
+  .phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 64px; }
+  .phase { padding: 32px 28px; border-right: 1px solid var(--line); }
+  .phase:last-child { border-right: none; }
+  .phase-num { font-family: 'Cormorant Garamond', serif; font-size: 56px; color: var(--gold); line-height: 1; font-weight: 500; }
+  .phase-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; margin-top: 12px; font-weight: 500; }
+  .phase-desc { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+  .phase-time { display: inline-block; margin-top: 14px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); border: 1px solid var(--line); padding: 4px 10px; border-radius: 2px; }
+
+  /* 11-step timeline */
+  .timeline { max-width: 760px; margin: 0 auto; position: relative; padding: 20px 0; }
+  .timeline::before { content: ''; position: absolute; left: 32px; top: 32px; bottom: 32px; width: 2px; background: var(--line); }
+  .ts {
+    position: relative;
+    padding-left: 88px;
+    padding-bottom: 36px;
+  }
+  .ts:last-child { padding-bottom: 0; }
+  .ts-dot {
+    position: absolute; left: 14px; top: 0;
+    width: 38px; height: 38px;
+    background: var(--ink); color: #fff;
+    border-radius: 50%; display: grid; place-items: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 16px;
+    border: 4px solid var(--paper);
+    z-index: 1;
+  }
+  .ts-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: var(--ink); }
+  .ts-desc { font-size: 15px; color: var(--muted); line-height: 1.7; margin-top: 6px; }
+  .ts-meta { display: inline-block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); background: var(--cream); padding: 4px 10px; border-radius: 2px; margin-top: 10px; }
+
+  /* Document checklist */
+  .docs-section { background: var(--cream); padding: 64px 32px; }
+  .docs-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 880px; margin: 28px auto 0; }
+  .doc {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 20px; background: #fff;
+    border-radius: 2px; border: 1px solid var(--line);
+  }
+  .doc-icon { width: 38px; height: 38px; border-radius: 50%; background: var(--ink); color: var(--gold); display: grid; place-items: center; flex-shrink: 0; font-family: 'Cormorant Garamond', serif; font-size: 16px; }
+  .doc strong { font-size: 14px; color: var(--ink); display: block; font-weight: 500; }
+  .doc small { font-size: 12px; color: var(--muted); }
+
+  /* FAQ */
+  .faq-list { max-width: 760px; margin: 28px auto 0; }
+  .faq {
+    border-bottom: 1px solid var(--line);
+    padding: 22px 0;
+  }
+  .faq summary {
+    list-style: none; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--ink);
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; font-size: 28px; color: var(--gold); transition: transform .2s; }
+  .faq[open] summary::after { content: '−'; }
+  .faq p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-top: 14px; }
+
+  /* CTA bar */
+  .apply-cta-bar {
+    background: var(--ink); color: #fff;
+    padding: 64px 32px;
+    text-align: center;
+  }
+  .apply-cta-bar h2 { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 500; color: #fff; }
+  .apply-cta-bar p { color: rgba(255,255,255,0.75); margin-top: 10px; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .apply-cta-bar .ctas { display: flex; gap: 12px; justify-content: center; margin-top: 28px; flex-wrap: wrap; }
+
+  @media (max-width: 980px) {
+    .phases { grid-template-columns: repeat(2, 1fr); }
+    .phase:nth-child(2) { border-right: none; }
+    .docs-list { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .phases { grid-template-columns: 1fr; }
+    .phase { border-right: none; border-bottom: 1px solid var(--line); }
+    .phase:last-child { border-bottom: none; }
+    .ts { padding-left: 64px; }
+    .timeline::before { left: 18px; }
+    .ts-dot { left: 0; width: 36px; height: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner"><strong>Demo preview</strong> · Concept site by Phuture Digital · Real building data, illustrative photography, sample availability</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">A</span>Africrest <span class="logo-sub">PROPERTIES</span></a>
+    <div class="nav-links">
+      <a href="buildings.html">Buildings</a>
+      <a href="units.html">Available units</a>
+      <a href="apply.html" class="active">How to apply</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html" class="nav-cta">Apply now</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="crumb"><a href="index.html">Home</a> <span class="sep">/</span> How to apply</div>
+    <h1>From enquiry to <em>keys in hand</em>.</h1>
+    <p class="lead">Most tenants are signed and approved within 5 business days. Here's exactly what happens at every stage — no surprises.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="section-inner">
+
+    <!-- 4 phases -->
+    <div class="phases">
+      <div class="phase"><div class="phase-num">01</div><div class="phase-title">Enquire & view</div><div class="phase-desc">Pick a unit, enquire online, walk in for a viewing.</div><span class="phase-time">Same week</span></div>
+      <div class="phase"><div class="phase-num">02</div><div class="phase-title">Apply</div><div class="phase-desc">Personalised form sent after your viewing. Upload docs once.</div><span class="phase-time">1–2 days</span></div>
+      <div class="phase"><div class="phase-num">03</div><div class="phase-title">Sign & pay</div><div class="phase-desc">Sign your digital lease and pay your deposit.</div><span class="phase-time">Same day</span></div>
+      <div class="phase"><div class="phase-num">04</div><div class="phase-title">Move in</div><div class="phase-desc">Key handover, fingerprint setup, welcome pack.</div><span class="phase-time">On lease date</span></div>
+    </div>
+
+    <!-- 11 steps -->
+    <div style="text-align: center; margin-bottom: 40px;">
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 500;">The full 11 steps</h2>
+      <p style="color: var(--muted); margin-top: 8px;">Every stage broken down — for anyone who likes the detail.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="ts"><div class="ts-dot">1</div>
+        <div class="ts-title">Enquire</div>
+        <div class="ts-desc">Email, call or WhatsApp us. Find contact details for each estate on the building page or our contact page.</div>
+      </div>
+      <div class="ts"><div class="ts-dot">2</div>
+        <div class="ts-title">Viewing</div>
+        <div class="ts-desc">Walk in any time during viewing hours. No appointment needed.</div>
+        <span class="ts-meta">Weekdays 9am–6pm · Saturdays 9am–2pm</span>
+      </div>
+      <div class="ts"><div class="ts-dot">3</div>
+        <div class="ts-title">Viewer's enquiry form</div>
+        <div class="ts-desc">Complete this short form at your viewing. We use it to email you all the info you need plus a personalised rental application.</div>
+      </div>
+      <div class="ts"><div class="ts-dot">4</div>
+        <div class="ts-title">Application form</div>
+        <div class="ts-desc">Fill in your details, upload all required documents (see checklist below). Make sure everything is accurate — incomplete applications are slower to process.</div>
+        <span class="ts-meta">1–2 business days processing</span>
+      </div>
+      <div class="ts"><div class="ts-dot">5</div>
+        <div class="ts-title">You're approved</div>
+        <div class="ts-desc">We'll contact you to confirm your apartment number. If you haven't picked one yet, we'll schedule a time for you to come back and choose.</div>
+      </div>
+      <div class="ts"><div class="ts-dot">6</div>
+        <div class="ts-title">Digital lease</div>
+        <div class="ts-desc">Check your inbox. Complete the remaining details and sign your lease electronically.</div>
+      </div>
+      <div class="ts"><div class="ts-dot">7</div>
+        <div class="ts-title">Pay the deposit</div>
+        <div class="ts-desc">Your deposit reserves your apartment. Once paid, send us your proof of payment.</div>
+      </div>
+      <div class="ts"><div class="ts-dot">8</div>
+        <div class="ts-title">Lease is complete</div>
+        <div class="ts-desc">You'll receive the counter-signed lease — your contract is now binding and your unit is held for you.</div>
+      </div>
+      <div class="ts"><div class="ts-dot">9</div>
+        <div class="ts-title">Key handover & inspection</div>
+        <div class="ts-desc">On-site meet-up before your lease starts. We complete the apartment inspection together, register your fingerprints, and confirm your move-in date.</div>
+      </div>
+      <div class="ts"><div class="ts-dot">10</div>
+        <div class="ts-title">Welcome pack</div>
+        <div class="ts-desc">Check your email for everything you need to know: estate contacts, security info, maintenance lines, fibre setup, prepaid electricity, house rules.</div>
+      </div>
+      <div class="ts"><div class="ts-dot">11</div>
+        <div class="ts-title">Move in</div>
+        <div class="ts-desc">Welcome home. Our negotiated 15% Africrest moving discount can save you a chunk — just ask for the partner list.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Documents checklist -->
+<section class="docs-section">
+  <div class="section-inner">
+    <div style="text-align: center;">
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 500;">What you'll need to apply</h2>
+      <p style="color: var(--muted); margin-top: 8px;">Have these ready before you start your application — it speeds everything up.</p>
+    </div>
+
+    <div class="docs-list">
+      <div class="doc"><span class="doc-icon">ID</span><div><strong>Valid SA ID or passport</strong><small>Both sides if SA ID card</small></div></div>
+      <div class="doc"><span class="doc-icon">£</span><div><strong>3 most recent payslips</strong><small>Or stamped employment confirmation</small></div></div>
+      <div class="doc"><span class="doc-icon">B</span><div><strong>3 months bank statements</strong><small>Stamped or password-free PDF from your bank</small></div></div>
+      <div class="doc"><span class="doc-icon">P</span><div><strong>Proof of address</strong><small>Recent utility bill or lease (not older than 3 months)</small></div></div>
+      <div class="doc"><span class="doc-icon">S</span><div><strong>If self-employed</strong><small>6 months bank statements + latest tax return</small></div></div>
+      <div class="doc"><span class="doc-icon">R</span><div><strong>Previous landlord reference</strong><small>If you've rented before — name and contact</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="section-inner">
+    <div style="text-align: center;">
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 500;">Common questions</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq" open>
+        <summary>How long does the application process take?</summary>
+        <p>Typically 1–2 business days from the time we receive a complete application with all supporting documents. Incomplete applications take longer because we have to come back to you for missing items.</p>
+      </details>
+      <details class="faq">
+        <summary>What's the minimum income I need to qualify?</summary>
+        <p>As a guideline, your gross monthly income should be at least 3× the rent. So for a R7,000/month apartment, that's around R21,000 gross per month. We do consider full applications holistically — bank conduct, employment stability and rental history all factor in.</p>
+      </details>
+      <details class="faq">
+        <summary>Can I apply before viewing?</summary>
+        <p>We strongly recommend a viewing first — you'll get a feel for the building and we can answer questions in person. If you're relocating from another city we can arrange a video walkthrough.</p>
+      </details>
+      <details class="faq">
+        <summary>What's the deposit?</summary>
+        <p>One month's rent, paid once-off before move-in. You'll also pay a R750 lease admin fee. Both are detailed on the unit page before you commit.</p>
+      </details>
+      <details class="faq">
+        <summary>Can I move to another Africrest building during my lease?</summary>
+        <p>Yes — and it's free. If your circumstances change, you can move to any of our other estates without penalty, subject to availability. This is one of the things our residents value most.</p>
+      </details>
+      <details class="faq">
+        <summary>Do I need to bring anything to the viewing?</summary>
+        <p>Just yourself. Bring your ID if you'd like to start your application form on the spot, but it's not required.</p>
+      </details>
+      <details class="faq">
+        <summary>What happens if I'm declined?</summary>
+        <p>We'll let you know the reason if it relates to something fixable (missing documents, clarification needed). For credit-related declines, we can't share specifics — but you're welcome to reapply once your circumstances change.</p>
+      </details>
+      <details class="faq">
+        <summary>Are pets allowed?</summary>
+        <p>Most of our buildings are not pet-friendly due to body corporate rules in mixed-use developments. A few estates allow small pets — check the building page or ask the on-site team.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA bar -->
+<section class="apply-cta-bar">
+  <h2>Ready to apply?</h2>
+  <p>Pick a building or browse available units to start. Most applications are decided within 2 business days.</p>
+  <div class="ctas">
+    <a href="units.html" class="btn btn-primary">Browse available units</a>
+    <a href="buildings.html" class="btn btn-outline-gold">See all 15 buildings</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div>
+      <a href="index.html" class="logo foot-logo"><span class="logo-mark">A</span>Africrest <span class="logo-sub">PROPERTIES</span></a>
+      <p style="max-width: 320px; line-height: 1.7;">15 lifestyle estates across Johannesburg.</p>
+    </div>
+    <div><h4>Buildings</h4><ul><li><a href="buildings.html">All buildings</a></li><li><a href="buildings.html">Sandton (4)</a></li></ul></div>
+    <div><h4>Renters</h4><ul><li><a href="units.html">Available units</a></li><li><a href="apply.html">How to apply</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="#">Careers</a></li></ul></div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Africrest Properties.</span><span>POPIA · Terms · Privacy</span></div>
+</footer>
+
+</body>
+</html>

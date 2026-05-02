@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — Africrest Properties</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* Two-col layout: form left, contact list right */
+  .contact-layout { max-width: 1280px; margin: 0 auto; padding: 64px 32px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; }
+
+  .contact-form-card {
+    background: #fff; border: 1px solid var(--line); border-radius: 4px;
+    padding: 40px;
+  }
+  .contact-form-card h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 500; color: var(--ink); }
+  .contact-form-card .sub { font-size: 14px; color: var(--muted); margin-top: 8px; margin-bottom: 28px; }
+
+  /* Contact methods */
+  .quick-contact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 28px; }
+  .quick-contact a {
+    background: var(--cream); border: 1px solid var(--line);
+    padding: 16px 14px; border-radius: 2px;
+    text-align: center; transition: all .15s;
+  }
+  .quick-contact a:hover { border-color: var(--ink); background: #fff; }
+  .quick-contact a strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--ink); margin-bottom: 4px; font-weight: 500; }
+  .quick-contact a span { font-size: 12px; color: var(--muted); }
+
+  /* Per-building list */
+  .building-contacts h2 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+  .building-contacts > p { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+  .bc-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--line); }
+  .bc {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 12px; flex-wrap: wrap;
+  }
+  .bc-info { flex: 1; min-width: 160px; }
+  .bc-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: var(--ink); }
+  .bc-area { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .bc-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+  .bc-action {
+    padding: 6px 12px;
+    background: var(--cream); border-radius: 2px;
+    font-size: 12px; color: var(--ink); border: 1px solid transparent;
+    transition: all .15s;
+  }
+  .bc-action:hover { border-color: var(--ink); }
+
+  /* Locations / map placeholder */
+  .map-section { background: var(--cream); padding: 64px 32px; }
+  .map-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 32px; }
+  .map-info h2 { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 500; color: var(--ink); }
+  .map-info p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-top: 14px; }
+  .map-info ul { list-style: none; margin-top: 20px; }
+  .map-info li { padding: 8px 0; font-size: 14px; color: var(--ink); border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; }
+  .map-info li span { color: var(--muted); font-size: 13px; }
+  .map-vis {
+    background: var(--ink) url('https://images.unsplash.com/photo-1524293568345-75d62c3664f7?w=1200') center/cover;
+    background-blend-mode: overlay;
+    min-height: 460px;
+    border-radius: 4px;
+    position: relative;
+    display: grid; place-items: center;
+    color: #fff;
+  }
+  .map-vis .placeholder {
+    background: rgba(15,46,42,0.85);
+    padding: 16px 24px;
+    border-radius: 2px;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 980px) {
+    .contact-layout { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px; }
+    .map-grid { grid-template-columns: 1fr; }
+    .map-vis { min-height: 320px; }
+  }
+  @media (max-width: 640px) {
+    .quick-contact { grid-template-columns: 1fr; }
+    .contact-form-card { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner"><strong>Demo preview</strong> · Concept site by Phuture Digital · Real building data, illustrative photography, sample availability</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">A</span>Africrest <span class="logo-sub">PROPERTIES</span></a>
+    <div class="nav-links">
+      <a href="buildings.html">Buildings</a>
+      <a href="units.html">Available units</a>
+      <a href="apply.html">How to apply</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="apply.html" class="nav-cta">Apply now</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="crumb"><a href="index.html">Home</a> <span class="sep">/</span> Contact</div>
+    <h1>Talk to a <em>real person</em>.</h1>
+    <p class="lead">Each building has its own on-site team — they answer faster than head office and they actually live with what they manage. Pick the right team below or send us a general enquiry.</p>
+  </div>
+</header>
+
+<div class="contact-layout">
+  <!-- Form -->
+  <main>
+    <div class="contact-form-card">
+      <h2>Book a viewing or ask anything</h2>
+      <p class="sub">We typically reply within a few hours during business days.</p>
+
+      <div class="quick-contact">
+        <a href="tel:+27115550100"><strong>Call</strong><span>+27 (0)11 555 0100</span></a>
+        <a href="https://wa.me/27115550100"><strong>WhatsApp</strong><span>+27 (0)11 555 0100</span></a>
+        <a href="mailto:hello@africrest.co.za"><strong>Email</strong><span>hello@africrest.co.za</span></a>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field"><label>Name</label><input type="text" placeholder="Your full name"></div>
+        <div class="form-field"><label>Surname</label><input type="text" placeholder="Surname"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+        <div class="form-field"><label>Phone</label><input type="tel" placeholder="+27 ..."></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Which building?</label>
+          <select>
+            <option>I'm not sure yet</option>
+            <option>The Maestro · Sandton</option>
+            <option>The Astra · Sandton</option>
+            <option>The Prestige · Sandton</option>
+            <option>The Maverick · Sandton</option>
+            <option>The Galileo · Bryanston</option>
+            <option>The Encore · Bryanston</option>
+            <option>The Silo · Sunninghill</option>
+            <option>The Eclipse · Sunninghill</option>
+            <option>The Landmark · Ferndale</option>
+            <option>The Titan · Ferndale</option>
+            <option>The Georgia · Waverley</option>
+            <option>The Legacy · Oaklands</option>
+            <option>Stanley Studios · Milpark</option>
+            <option>The Leo · Marshalltown</option>
+            <option>The Village · Bramley</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Apartment type</label>
+          <select>
+            <option>Any</option>
+            <option>Studio</option>
+            <option>Bachelor</option>
+            <option>1 Bedroom</option>
+            <option>2 Bedroom</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-field">
+        <label>What's this about?</label>
+        <select>
+          <option>I'd like to book a viewing</option>
+          <option>I have a question about a unit</option>
+          <option>I'm a current resident — maintenance / general</option>
+          <option>Press / media enquiry</option>
+          <option>Supplier / partnership</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Message</label>
+        <textarea placeholder="Tell us a bit more — anything that helps us help you faster."></textarea>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="popia">
+        <label for="popia" style="font-size: 13px; padding: 0; display: inline; cursor: pointer; color: var(--muted); font-weight: 400; letter-spacing: normal; text-transform: none;">I accept the <a href="#" style="color: var(--ink); text-decoration: underline;">privacy policy</a> and consent to Africrest contacting me about this enquiry.</label>
+      </div>
+      <button class="btn btn-dark" style="width: 100%; margin-top: 12px;">Find my home →</button>
+    </div>
+  </main>
+
+  <!-- Building contacts -->
+  <aside>
+    <div class="building-contacts">
+      <h2>On-site teams</h2>
+      <p>Each estate has a dedicated team. They answer faster — and know more — than head office.</p>
+
+      <div class="bc-list">
+        <div class="bc"><div class="bc-info"><div class="bc-name">The Maestro</div><div class="bc-area">Sandton</div></div>
+          <div class="bc-actions"><a href="tel:+27115550143" class="bc-action">Call</a><a href="https://wa.me/27115550143" class="bc-action">WhatsApp</a></div></div>
+        <div class="bc"><div class="bc-info"><div class="bc-name">The Astra</div><div class="bc-area">Sandton</div></div>
+          <div class="bc-actions"><a href="tel:+27115550144" class="bc-action">Call</a><a href="https://wa.me/27115550144" class="bc-action">WhatsApp</a></div></div>
+        <div class="bc"><div class="bc-info"><div class="bc-name">The Prestige</div><div class="bc-area">Sandton</div></div>
+          <div class="bc-actions"><a href="tel:+27115550145" class="bc-action">Call</a><a href="https://wa.me/27115550145" class="bc-action">WhatsApp</a></div></div>
+        <div class="bc"><div class="bc-info"><div class="bc-name">The Maverick</div><div class="bc-area">Sandton</div></div>
+          <div class="bc-actions"><a href="tel:+27115550146" class="bc-action">Call</a><a href="https://wa.me/27115550146" class="bc-action">WhatsApp</a></div></div>
+        <div class="bc"><div class="bc-info"><div class="bc-name">The Galileo</div><div class="bc-area">Bryanston</div></div>
+          <div class="bc-actions"><a href="tel:+27115550147" class="bc-action">Call</a><a href="https://wa.me/27115550147" class="bc-action">WhatsApp</a></div></div>
+        <div class="bc"><div class="bc-info"><div class="bc-name">The Encore</div><div class="bc-area">Bryanston</div></div>
+          <div class="bc-actions"><a href="tel:+27115550148" class="bc-action">Call</a><a href="https://wa.me/27115550148" class="bc-action">WhatsApp</a></div></div>
+        <div class="bc"><div class="bc-info"><div class="bc-name">The Silo</div><div class="bc-area">Sunninghill</div></div>
+          <div class="bc-actions"><a href="tel:+27115550149" class="bc-action">Call</a><a href="https://wa.me/27115550149" class="bc-action">WhatsApp</a></div></div>
+        <div class="bc"><div class="bc-info"><div class="bc-name">The Eclipse</div><div class="bc-area">Sunninghill</div></div>
+          <div class="bc-actions"><a href="tel:+27115550150" class="bc-action">Call</a><a href="https://wa.me/27115550150" class="bc-action">WhatsApp</a></div></div>
+        <div class="bc"><div class="bc-info"><div class="bc-name">The Landmark</div><div class="bc-area">Ferndale</div></div>
+          <div class="bc-actions"><a href="tel:+27115550151" class="bc-action">Call</a><a href="https://wa.me/27115550151" class="bc-action">WhatsApp</a></div></div>
+        <div class="bc"><div class="bc-info"><div class="bc-name">The Titan</div><div class="bc-area">Ferndale</div></div>
+          <div class="bc-actions"><a href="tel:+27115550152" class="bc-action">Call</a><a href="https://wa.me/27115550152" class="bc-action">WhatsApp</a></div></div>
+        <div class="bc"><div class="bc-info"><div class="bc-name">The Georgia</div><div class="bc-area">Waverley</div></div>
+          <div class="bc-actions"><a href="tel:+27115550153" class="bc-action">Call</a><a href="https://wa.me/27115550153" class="bc-action">WhatsApp</a></div></div>
+        <div class="bc"><div class="bc-info"><div class="bc-name">The Legacy</div><div class="bc-area">Oaklands</div></div>
+          <div class="bc-actions"><a href="tel:+27115550154" class="bc-action">Call</a><a href="https://wa.me/27115550154" class="bc-action">WhatsApp</a></div></div>
+        <div class="bc"><div class="bc-info"><div class="bc-name">Stanley Studios</div><div class="bc-area">Milpark</div></div>
+          <div class="bc-actions"><a href="tel:+27115550155" class="bc-action">Call</a><a href="https://wa.me/27115550155" class="bc-action">WhatsApp</a></div></div>
+        <div class="bc"><div class="bc-info"><div class="bc-name">The Leo</div><div class="bc-area">Marshalltown</div></div>
+          <div class="bc-actions"><a href="tel:+27115550156" class="bc-action">Call</a><a href="https://wa.me/27115550156" class="bc-action">WhatsApp</a></div></div>
+        <div class="bc"><div class="bc-info"><div class="bc-name">The Village</div><div class="bc-area">Bramley</div></div>
+          <div class="bc-actions"><a href="tel:+27115550157" class="bc-action">Call</a><a href="https://wa.me/27115550157" class="bc-action">WhatsApp</a></div></div>
+      </div>
+
+      <div style="margin-top: 28px; padding: 18px 20px; background: var(--cream); border-radius: 4px; font-size: 13px; color: var(--ink);">
+        <strong style="font-family: 'Cormorant Garamond', serif; font-size: 16px; display: block; margin-bottom: 4px;">Head office</strong>
+        <span style="color: var(--muted);">Mon–Fri 8am–5pm · hello@africrest.co.za</span>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- Map -->
+<section class="map-section">
+  <div class="map-grid">
+    <div class="map-info">
+      <h2>Where we are.</h2>
+      <p>15 buildings spread across northern and central Joburg — from Sandton to Marshalltown. Click any building below to view it on the map.</p>
+      <ul>
+        <li>Sandton <span>4 buildings</span></li>
+        <li>Bryanston <span>2 buildings</span></li>
+        <li>Sunninghill <span>2 buildings</span></li>
+        <li>Ferndale <span>2 buildings</span></li>
+        <li>Waverley <span>1 building</span></li>
+        <li>Oaklands <span>1 building</span></li>
+        <li>Milpark <span>1 building</span></li>
+        <li>Marshalltown <span>1 building</span></li>
+        <li>Bramley <span>1 building</span></li>
+      </ul>
+    </div>
+    <div class="map-vis">
+      <div class="placeholder">[ Interactive map — Google Maps with all 15 markers ]</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div>
+      <a href="index.html" class="logo foot-logo"><span class="logo-mark">A</span>Africrest <span class="logo-sub">PROPERTIES</span></a>
+      <p style="max-width: 320px; line-height: 1.7;">15 lifestyle estates across Johannesburg.</p>
+    </div>
+    <div><h4>Buildings</h4><ul><li><a href="buildings.html">All buildings</a></li><li><a href="buildings.html">Sandton (4)</a></li></ul></div>
+    <div><h4>Renters</h4><ul><li><a href="units.html">Available units</a></li><li><a href="apply.html">How to apply</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="#">Careers</a></li></ul></div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Africrest Properties.</span><span>POPIA · Terms · Privacy</span></div>
+</footer>
+
+</body>
+</html>

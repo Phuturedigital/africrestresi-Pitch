@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Africrest Properties</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* Editorial intro */
+  .editorial { padding: 80px 32px; }
+  .editorial-inner { max-width: 880px; margin: 0 auto; }
+  .editorial .label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+  .editorial h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 56px); font-weight: 500; line-height: 1.1; margin-top: 14px; color: var(--ink); }
+  .editorial .lead { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--muted); line-height: 1.5; margin-top: 24px; max-width: 720px; }
+  .editorial p { font-size: 16px; line-height: 1.85; color: var(--ink); margin-top: 22px; }
+
+  /* Stats band */
+  .stats-band { background: var(--ink); color: #fff; padding: 64px 32px; }
+  .stats-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+  .stat-cell { text-align: left; }
+  .stat-cell .n { font-family: 'Cormorant Garamond', serif; font-size: 56px; color: var(--gold); font-weight: 500; line-height: 1; }
+  .stat-cell .l { font-size: 14px; color: rgba(255,255,255,0.75); margin-top: 8px; line-height: 1.5; }
+
+  /* Five fundamentals */
+  .fundamentals { padding: 80px 32px; background: var(--cream); }
+  .fund-grid { max-width: 1280px; margin: 32px auto 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .fund { padding: 32px 24px; border-right: 1px solid var(--line); }
+  .fund:last-child { border-right: none; }
+  .fund-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: var(--gold); font-weight: 500; }
+  .fund h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--ink); margin-top: 8px; }
+  .fund p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-top: 8px; }
+
+  /* Recognition block (honest version) */
+  .recognition { padding: 80px 32px; background: #fff; }
+  .recog-inner { max-width: 880px; margin: 0 auto; text-align: center; }
+  .recog-inner h2 { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 500; color: var(--ink); }
+  .recog-inner > p { color: var(--muted); margin-top: 10px; }
+  .recog-pills { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
+  .recog-pill {
+    background: var(--cream); border: 1px solid var(--line);
+    padding: 18px 28px; border-radius: 2px;
+    font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--ink);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .recog-pill .n { font-size: 28px; color: var(--gold); font-weight: 500; }
+  .recog-note { margin-top: 28px; font-size: 13px; color: var(--muted); font-style: italic; }
+
+  /* Testimonials */
+  .testimonials { background: var(--ink); color: #fff; padding: 80px 32px; }
+  .testimonials .section-head h2 { color: #fff; }
+  .testimonial-grid { max-width: 1280px; margin: 32px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .testimonial {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    padding: 32px 28px;
+    position: relative;
+  }
+  .testimonial::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 88px;
+    color: var(--gold);
+    position: absolute; top: 0; left: 16px;
+    line-height: 1;
+    opacity: 0.7;
+  }
+  .testimonial blockquote { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; line-height: 1.55; padding-top: 20px; }
+  .testimonial cite { display: block; margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); font-style: normal; font-size: 13px; color: rgba(255,255,255,0.7); }
+  .testimonial cite strong { color: var(--gold-soft); font-weight: 500; display: block; }
+
+  /* Two-column section */
+  .two-col {
+    display: grid; grid-template-columns: 1fr 1fr;
+    background: var(--paper);
+  }
+  .two-col-text { padding: 80px 64px; }
+  .two-col-text h2 { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 500; color: var(--ink); }
+  .two-col-text p { font-size: 15px; line-height: 1.8; color: var(--muted); margin-top: 16px; max-width: 480px; }
+  .two-col-img { background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=900') center/cover; min-height: 480px; }
+
+  /* CTA */
+  .about-cta { background: var(--cream); padding: 80px 32px; text-align: center; }
+  .about-cta h2 { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 500; color: var(--ink); }
+  .about-cta p { font-size: 15px; color: var(--muted); margin-top: 10px; max-width: 540px; margin-left: auto; margin-right: auto; }
+  .about-cta .ctas { margin-top: 28px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  @media (max-width: 980px) {
+    .stats-grid, .fund-grid, .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+    .fund:nth-child(2), .fund:nth-child(4) { border-right: none; }
+    .two-col { grid-template-columns: 1fr; }
+    .two-col-text { padding: 56px 32px; }
+    .two-col-img { min-height: 320px; }
+  }
+  @media (max-width: 640px) {
+    .stats-grid, .fund-grid, .testimonial-grid { grid-template-columns: 1fr; }
+    .fund { border-right: none; border-bottom: 1px solid var(--line); }
+    .fund:last-child { border-bottom: none; }
+    .editorial { padding: 56px 24px; }
+    .editorial .lead { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner"><strong>Demo preview</strong> · Concept site by Phuture Digital · Real building data, illustrative photography, sample availability</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">A</span>Africrest <span class="logo-sub">PROPERTIES</span></a>
+    <div class="nav-links">
+      <a href="buildings.html">Buildings</a>
+      <a href="units.html">Available units</a>
+      <a href="apply.html">How to apply</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html" class="nav-cta">Apply now</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="crumb"><a href="index.html">Home</a> <span class="sep">/</span> About</div>
+    <h1>We don't sell <em>what we build</em>.</h1>
+    <p class="lead">Most developers cash out and walk away. We design, own and manage every estate — which is why our facilities are the ones residents actually use.</p>
+  </div>
+</header>
+
+<!-- Editorial intro -->
+<section class="editorial">
+  <div class="editorial-inner">
+    <span class="label">Our story</span>
+    <h2>15 buildings. One company. One standard.</h2>
+    <p class="lead">Africrest develops, owns and manages every estate entirely for rentals — for the modern South African.</p>
+    <p>Our above-industry-average lease renewal rates aren't a marketing line. They're the only number that matters in residential property, and they're the reason 9 out of 10 of our tenants would recommend us to a friend.</p>
+    <p>We focus on five fundamentals — security, value-for-money, service, facilities, location — and we deliver all five at every building, in every area we operate. From Sandton to Marshalltown, the standard doesn't change.</p>
+    <p>If your circumstances change mid-lease, you can move to any of our other estates penalty-free. We don't make money on your inconvenience.</p>
+  </div>
+</section>
+
+<!-- Stats band -->
+<section class="stats-band">
+  <div class="stats-grid">
+    <div class="stat-cell"><div class="n">15</div><div class="l">Lifestyle estates across Joburg</div></div>
+    <div class="stat-cell"><div class="n">9</div><div class="l">Areas — Sandton to Marshalltown</div></div>
+    <div class="stat-cell"><div class="n">9/10</div><div class="l">Tenants would recommend us</div></div>
+    <div class="stat-cell"><div class="n">24h</div><div class="l">Average maintenance response time</div></div>
+  </div>
+</section>
+
+<!-- 5 fundamentals -->
+<section class="fundamentals">
+  <div class="section-inner">
+    <div style="text-align: center;">
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 500;">Five things we get right.</h2>
+      <p style="color: var(--muted); margin-top: 10px; max-width: 540px; margin-left: auto; margin-right: auto;">Every Africrest estate is built around the same five fundamentals — no exceptions, no shortcuts.</p>
+    </div>
+
+    <div class="fund-grid">
+      <div class="fund"><div class="fund-num">01</div><h3>Security</h3><p>Access control, 24-hour security and CCTV surveillance at every estate. Your safety is our priority.</p></div>
+      <div class="fund"><div class="fund-num">02</div><h3>Value for money</h3><p>Rent that includes water, internet, and the use of facilities most residents would never afford alone.</p></div>
+      <div class="fund"><div class="fund-num">03</div><h3>Service</h3><p>On-site teams at every building. Maintenance issues resolved in under 24 hours on average.</p></div>
+      <div class="fund"><div class="fund-num">04</div><h3>Facilities</h3><p>Pool, gym, business centre, café, cinema. Built for residents, not for show.</p></div>
+      <div class="fund"><div class="fund-num">05</div><h3>Location</h3><p>Walking distance to what matters — work, transport, shops, restaurants. We don't build in dead zones.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Two col -->
+<section class="two-col">
+  <div class="two-col-text">
+    <h2>Built for renters.<br/>Not for sale.</h2>
+    <p>Every Africrest building is purpose-built as a rental estate — not converted, not subdivided from a sold-off block. That changes everything.</p>
+    <p>Our facilities are designed to be used daily by 100+ residents, not staged for showings. Our buildings stay under one management — no body corporate politics, no absent landlords, no inconsistent maintenance.</p>
+    <p>And because we own every unit, our incentives match yours. Empty apartments cost us money. Unhappy tenants don't renew. Every business decision flows from those two facts.</p>
+    <a href="buildings.html" class="btn btn-outline-dark" style="margin-top: 24px;">See our 15 buildings →</a>
+  </div>
+  <div class="two-col-img"></div>
+</section>
+
+<!-- Recognition (honest, demo-safe) -->
+<section class="recognition">
+  <div class="recog-inner">
+    <h2>What we're known for.</h2>
+    <p>The numbers we lead with are the ones our residents care about — not the ones we picked.</p>
+    <div class="recog-pills">
+      <div class="recog-pill"><span class="n">9/10</span> Tenants would recommend us</div>
+      <div class="recog-pill"><span class="n">15</span> Estates owned & managed</div>
+      <div class="recog-pill"><span class="n">24h</span> Maintenance response</div>
+      <div class="recog-pill"><span class="n">1,000+</span> Resident survey respondents</div>
+    </div>
+    <p class="recog-note">[ Awards & industry recognition section to be populated with verified Africrest credentials ]</p>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials">
+  <div class="section-inner">
+    <div class="section-head" style="text-align: center; display: block;">
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 500;">What residents say.</h2>
+      <p style="color: rgba(255,255,255,0.7); margin-top: 10px;">Selected from a 2025 survey of 1,000+ Africrest tenants.</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <blockquote>One of the things that has impressed me most about Africrest is how responsive they are to our queries. We always receive a reply promptly and they actually care about making us feel comfortable in our home. Unlike most landlords, we are treated like a valued resident, rather than just another tenant.</blockquote>
+        <cite><strong>Zinhle Jacobs</strong>The Maestro · Sandton</cite>
+      </div>
+      <div class="testimonial">
+        <blockquote>I did not expect to make so many friends with my neighbours. I feel like I am part of a special community. The events the team puts on each month genuinely bring people together.</blockquote>
+        <cite><strong>Cindy Adams</strong>The Galileo · Bryanston</cite>
+      </div>
+      <div class="testimonial">
+        <blockquote>The management team are great. They are always on hand when we have experienced any issues with our apartment — quick and efficient to respond and resolve any problems we have faced.</blockquote>
+        <cite><strong>Thandi Dlamini</strong>The Silo · Sunninghill</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="about-cta">
+  <h2>Find your home with us.</h2>
+  <p>15 buildings. One standard across every one.</p>
+  <div class="ctas">
+    <a href="buildings.html" class="btn btn-dark">Browse buildings</a>
+    <a href="units.html" class="btn btn-outline-dark">See available units</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div>
+      <a href="index.html" class="logo foot-logo"><span class="logo-mark">A</span>Africrest <span class="logo-sub">PROPERTIES</span></a>
+      <p style="max-width: 320px; line-height: 1.7;">15 lifestyle estates across Johannesburg.</p>
+    </div>
+    <div><h4>Buildings</h4><ul><li><a href="buildings.html">All buildings</a></li><li><a href="buildings.html">Sandton (4)</a></li></ul></div>
+    <div><h4>Renters</h4><ul><li><a href="units.html">Available units</a></li><li><a href="apply.html">How to apply</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="#">Careers</a></li></ul></div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Africrest Properties.</span><span>POPIA · Terms · Privacy</span></div>
+</footer>
+
+</body>
+</html>

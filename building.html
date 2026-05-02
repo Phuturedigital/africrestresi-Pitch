@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Maestro — Africrest Properties</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* Building header — image-led */
+  .b-hero {
+    position: relative; height: 480px; overflow: hidden;
+    background: var(--ink);
+  }
+  .b-hero-img { position: absolute; inset: 0; }
+  .b-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+  .b-hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,46,42,0.3) 0%, rgba(15,46,42,0.85) 100%); }
+  .b-hero-inner { position: relative; max-width: 1280px; margin: 0 auto; height: 100%; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; color: #fff; }
+  .b-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 6vw, 88px); font-weight: 500; line-height: 1; margin-bottom: 8px; }
+  .b-hero-sub { display: flex; gap: 24px; font-size: 14px; align-items: center; flex-wrap: wrap; }
+  .b-hero-sub strong { font-weight: 500; color: var(--gold-soft); }
+
+  /* Sticky info bar */
+  .info-bar {
+    background: #fff; border-bottom: 1px solid var(--line);
+    padding: 18px 32px;
+    position: sticky; top: 65px; z-index: 30;
+  }
+  .info-bar-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .info-stats { display: flex; gap: 32px; font-size: 14px; }
+  .info-stat { display: flex; flex-direction: column; gap: 2px; }
+  .info-stat .l { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .info-stat .v { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--ink); font-weight: 500; }
+  .info-actions { display: flex; gap: 10px; }
+
+  /* Layout */
+  .b-layout { max-width: 1280px; margin: 0 auto; padding: 56px 32px; display: grid; grid-template-columns: 1.6fr 1fr; gap: 56px; }
+  .b-main h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 500; color: var(--ink); margin-bottom: 16px; margin-top: 40px; }
+  .b-main h2:first-child { margin-top: 0; }
+  .b-main p { font-size: 15px; line-height: 1.75; color: var(--muted); margin-bottom: 14px; }
+
+  /* Gallery */
+  .gallery { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: repeat(2, 180px); gap: 8px; margin-bottom: 40px; }
+  .gallery div { background-size: cover; background-position: center; border-radius: 2px; cursor: pointer; transition: transform .25s; }
+  .gallery div:hover { transform: scale(0.99); }
+  .gallery div:first-child { grid-row: 1 / 3; }
+
+  /* Facilities */
+  .facilities { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+  .fac { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 2px; font-size: 14px; background: #fff; }
+  .fac-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+  /* Sidebar (sticky CTA card) */
+  .sidebar-card { position: sticky; top: 160px; background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 28px; }
+  .sidebar-card .price-from { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .sidebar-card .price { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 500; color: var(--ink); line-height: 1; margin-top: 4px; }
+  .sidebar-card .price small { font-size: 16px; color: var(--muted); margin-left: 4px; }
+  .sidebar-card .types { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .type-pill { font-size: 11px; padding: 4px 10px; background: var(--cream); color: var(--ink); border-radius: 100px; letter-spacing: 0.04em; }
+  .sidebar-card .ctas { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .sidebar-card .ctas .btn { text-align: center; }
+  .sidebar-card .or { text-align: center; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 6px 0; }
+  .sidebar-card hr { border: none; border-top: 1px solid var(--line); margin: 22px 0; }
+  .sidebar-meta { font-size: 13px; color: var(--muted); display: flex; flex-direction: column; gap: 8px; }
+  .sidebar-meta strong { color: var(--ink); font-weight: 500; }
+
+  /* Available units in this building */
+  .building-units { background: var(--ink); color: #fff; padding: 64px 32px; }
+  .building-units h2 { color: #fff; }
+  .building-units .unit-grid { grid-template-columns: repeat(4, 1fr); }
+
+  /* Other buildings */
+  .other-buildings { padding: 64px 32px; background: var(--cream); }
+  .other-buildings .building-grid { grid-template-columns: repeat(3, 1fr); }
+
+  @media (max-width: 980px) {
+    .b-layout { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px; }
+    .sidebar-card { position: static; }
+    .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px; }
+    .gallery div:first-child { grid-row: auto; grid-column: 1 / 3; }
+    .facilities { grid-template-columns: 1fr 1fr; }
+    .info-bar { position: static; }
+    .building-units .unit-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .b-hero { height: 360px; }
+    .info-stats { gap: 18px; }
+    .info-stat .v { font-size: 18px; }
+    .facilities { grid-template-columns: 1fr; }
+    .building-units .unit-grid, .other-buildings .building-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner"><strong>Demo preview</strong> · Concept site by Phuture Digital · Real building data, illustrative photography, sample availability</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">A</span>Africrest <span class="logo-sub">PROPERTIES</span></a>
+    <div class="nav-links">
+      <a href="buildings.html" class="active">Buildings</a>
+      <a href="units.html">Available units</a>
+      <a href="apply.html">How to apply</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html" class="nav-cta">Apply now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="b-hero">
+  <div class="b-hero-img"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600" alt="The Maestro"></div>
+  <div class="b-hero-inner">
+    <div class="crumb"><a href="index.html">Home</a> <span class="sep">/</span> <a href="buildings.html">Buildings</a> <span class="sep">/</span> The Maestro</div>
+    <div>
+      <h1>The Maestro</h1>
+      <div class="b-hero-sub">
+        <span><strong>Sandton</strong> · 155 5th Street</span>
+        <span>Studio · 1 & 2 Bedroom Apartments</span>
+        <span style="background: var(--gold); color: var(--ink); padding: 4px 10px; border-radius: 2px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;">New development</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sticky info bar -->
+<div class="info-bar">
+  <div class="info-bar-inner">
+    <div class="info-stats">
+      <div class="info-stat"><span class="l">Rent from</span><span class="v">R7,190</span></div>
+      <div class="info-stat"><span class="l">Available</span><span class="v">4 units</span></div>
+      <div class="info-stat"><span class="l">Total apartments</span><span class="v">86</span></div>
+      <div class="info-stat"><span class="l">Move in</span><span class="v">From 1 Jun</span></div>
+    </div>
+    <div class="info-actions">
+      <a href="contact.html" class="btn btn-outline-dark">Book a viewing</a>
+      <a href="apply.html" class="btn btn-dark">Apply for The Maestro</a>
+    </div>
+  </div>
+</div>
+
+<!-- Main + sidebar -->
+<div class="b-layout">
+  <div class="b-main">
+    <!-- Gallery -->
+    <div class="gallery">
+      <div style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900')"></div>
+      <div style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600')"></div>
+      <div style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600')"></div>
+      <div style="background-image: url('https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=600')"></div>
+      <div style="background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600'); position: relative; display: flex; align-items: flex-end; justify-content: flex-end;">
+        <div style="background: rgba(15,46,42,0.85); color: #fff; padding: 8px 14px; margin: 8px; border-radius: 2px; font-size: 12px; letter-spacing: 0.06em;">+ 24 photos</div>
+      </div>
+    </div>
+
+    <h2>About this estate</h2>
+    <p>The Maestro is one of our newest developments — a luxury 86-unit estate on Sandton's prime 5th Street strip. Studio, 1 and 2-bedroom apartments are designed around a resort-style courtyard with pool, gym, business centre and rooftop entertainment areas.</p>
+    <p>Like every Africrest estate, The Maestro is built, owned and managed by us — our on-site team handles maintenance, security and resident services directly. Mid-lease moves to other Africrest buildings are penalty-free.</p>
+
+    <h2>Common area facilities</h2>
+    <div class="facilities">
+      <div class="fac"><span class="fac-dot"></span>Resort-style swimming pool</div>
+      <div class="fac"><span class="fac-dot"></span>Fully-equipped gym</div>
+      <div class="fac"><span class="fac-dot"></span>Business centre</div>
+      <div class="fac"><span class="fac-dot"></span>Private dining room</div>
+      <div class="fac"><span class="fac-dot"></span>Cinema room</div>
+      <div class="fac"><span class="fac-dot"></span>Café & lounge</div>
+      <div class="fac"><span class="fac-dot"></span>Games room</div>
+      <div class="fac"><span class="fac-dot"></span>Convenience store</div>
+      <div class="fac"><span class="fac-dot"></span>Laundromat</div>
+      <div class="fac"><span class="fac-dot"></span>24h security & CCTV</div>
+      <div class="fac"><span class="fac-dot"></span>Backup power & water</div>
+      <div class="fac"><span class="fac-dot"></span>Free fibre internet</div>
+    </div>
+
+    <h2>Apartment features</h2>
+    <p>Designer kitchens with granite or quartz countertops. Built-in oven, stove, extractor. Prepaid electricity and water meters — only pay for what you use. Fitted space for washing machine. Spacious bathrooms with trendy fittings. Secure basement parking with access control.</p>
+
+    <h2>Location</h2>
+    <p>155 5th Street, Sandton — minutes from Sandton City, Nelson Mandela Square, Gautrain station and the M1 highway. Walking distance to restaurants, gyms, banks and grocers.</p>
+    <div style="background: var(--cream); border: 1px solid var(--line); height: 280px; border-radius: 2px; display: grid; place-items: center; color: var(--muted); font-size: 13px;">[ Map placeholder — Google Maps embed ]</div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside>
+    <div class="sidebar-card">
+      <span class="price-from">Rent from</span>
+      <div class="price">R7,190<small>/mo</small></div>
+      <div class="types">
+        <span class="type-pill">Studio · R7,190</span>
+        <span class="type-pill">1 Bed · R8,490</span>
+        <span class="type-pill">2 Bed · R11,290</span>
+      </div>
+
+      <div class="ctas">
+        <a href="apply.html" class="btn btn-primary">Apply for this building</a>
+        <div class="or">or</div>
+        <a href="#available-units" class="btn btn-outline-dark">Pick a specific unit ↓</a>
+      </div>
+
+      <hr>
+
+      <div class="sidebar-meta">
+        <div><strong>4 units available</strong> from 1 Jun 2026</div>
+        <div><strong>Viewings:</strong> Walk-in weekdays 9–6, Saturdays 9–2</div>
+        <div><strong>On-site team:</strong> The Maestro reception</div>
+      </div>
+
+      <hr>
+
+      <a href="contact.html" class="btn btn-ghost" style="text-align: center; padding: 0; font-size: 13px;">Speak to The Maestro team →</a>
+    </div>
+  </aside>
+</div>
+
+<!-- Available units in this building -->
+<section id="available-units" class="building-units">
+  <div class="section-inner">
+    <div class="section-head">
+      <div><h2>4 units available at The Maestro</h2><p style="color: rgba(255,255,255,0.65);">Pick the apartment you want — apply directly without choosing later.</p></div>
+    </div>
+    <div class="unit-grid">
+      <a href="unit.html" class="u-card">
+        <div class="u-img"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400" alt=""><span class="u-tag">Move-in ready</span></div>
+        <div class="u-body"><div class="u-name">Unit #304 · 3rd floor</div><div class="u-type">1 Bedroom</div>
+          <div class="u-meta"><span>42m²</span><span>North-facing</span><span>Balcony</span></div>
+          <div class="u-foot"><div class="u-rent">R7,190<small>/mo</small></div><span class="u-cta">View →</span></div>
+        </div>
+      </a>
+      <a href="unit.html" class="u-card">
+        <div class="u-img"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400" alt=""><span class="u-tag">Available 1 Jun</span></div>
+        <div class="u-body"><div class="u-name">Unit #506 · 5th floor</div><div class="u-type">Studio</div>
+          <div class="u-meta"><span>32m²</span><span>City view</span></div>
+          <div class="u-foot"><div class="u-rent">R7,290<small>/mo</small></div><span class="u-cta">View →</span></div>
+        </div>
+      </a>
+      <a href="unit.html" class="u-card">
+        <div class="u-img"><img src="https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=400" alt=""><span class="u-tag">Move-in ready</span></div>
+        <div class="u-body"><div class="u-name">Unit #211 · 2nd floor</div><div class="u-type">1 Bedroom</div>
+          <div class="u-meta"><span>44m²</span><span>Pool view</span></div>
+          <div class="u-foot"><div class="u-rent">R8,490<small>/mo</small></div><span class="u-cta">View →</span></div>
+        </div>
+      </a>
+      <a href="unit.html" class="u-card">
+        <div class="u-img"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400" alt=""><span class="u-tag">Available 15 Jun</span></div>
+        <div class="u-body"><div class="u-name">Unit #702 · 7th floor</div><div class="u-type">2 Bedroom</div>
+          <div class="u-meta"><span>68m²</span><span>2 Bath</span><span>Skyline</span></div>
+          <div class="u-foot"><div class="u-rent">R11,290<small>/mo</small></div><span class="u-cta">View →</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Other Africrest buildings -->
+<section class="other-buildings">
+  <div class="section-inner">
+    <div class="section-head">
+      <div><h2>Other Africrest buildings</h2><p>If The Maestro isn't quite right, here are similar estates with units available right now.</p></div>
+      <a href="buildings.html" style="font-size: 13px; color: var(--ink); text-decoration: underline;">View all 15 →</a>
+    </div>
+    <div class="building-grid">
+      <a href="building.html" class="b-card">
+        <div class="b-img"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600" alt=""><span class="b-area-tag">Sandton</span></div>
+        <div class="b-body"><div class="b-name">The Astra</div><div class="b-addr">166 Grayston Drive</div>
+          <div class="b-row"><div class="b-price"><small>From</small><strong>R6,390</strong></div><span class="b-avail">2 available</span></div></div></a>
+      <a href="building.html" class="b-card">
+        <div class="b-img"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600" alt=""><span class="b-area-tag">Bryanston</span></div>
+        <div class="b-body"><div class="b-name">The Galileo</div><div class="b-addr">23 Hobart Road</div>
+          <div class="b-row"><div class="b-price"><small>From</small><strong>R6,590</strong></div><span class="b-avail">3 available</span></div></div></a>
+      <a href="building.html" class="b-card">
+        <div class="b-img"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600" alt=""><span class="b-area-tag">Sunninghill</span></div>
+        <div class="b-body"><div class="b-name">The Silo</div><div class="b-addr">18 Eglin Road</div>
+          <div class="b-row"><div class="b-price"><small>From</small><strong>R5,590</strong></div><span class="b-avail hot">6 available</span></div></div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div>
+      <a href="index.html" class="logo foot-logo"><span class="logo-mark">A</span>Africrest <span class="logo-sub">PROPERTIES</span></a>
+      <p style="max-width: 320px; line-height: 1.7;">15 lifestyle estates across Johannesburg.</p>
+    </div>
+    <div><h4>Buildings</h4><ul><li><a href="buildings.html">All buildings</a></li><li><a href="buildings.html">Sandton (4)</a></li><li><a href="buildings.html">Other areas</a></li></ul></div>
+    <div><h4>Renters</h4><ul><li><a href="units.html">Available units</a></li><li><a href="apply.html">How to apply</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="#">Careers</a></li></ul></div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Africrest Properties.</span><span>POPIA · Terms · Privacy</span></div>
+</footer>
+
+</body>
+</html>

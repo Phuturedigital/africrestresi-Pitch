@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>africrestresi.co.za — a conversion audit · Phuture Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f2e2a;
+    --ink-2: #143a35;
+    --gold: #c9a449;
+    --gold-soft: #e0c987;
+    --cream: #f6efe2;
+    --paper: #faf6ec;
+    --line: rgba(15,46,42,0.12);
+    --muted: #5a6a66;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #000; color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+    height: 100vh;
+  }
+  .deck {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--paper);
+    color: var(--ink);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 48px 64px;
+    overflow: auto;
+  }
+  .slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .slide-num {
+    position: absolute;
+    top: 32px;
+    right: 48px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.16em;
+  }
+  .slide-num span { color: var(--ink); font-weight: 600; }
+  .brand {
+    position: absolute;
+    top: 32px;
+    left: 48px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .brand strong { color: var(--ink); font-weight: 600; }
+
+  /* Navigation hint */
+  .nav-hint {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .nav-hint kbd {
+    background: var(--ink); color: var(--paper);
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-family: 'Cormorant Garamond', serif;
+    margin: 0 4px;
+  }
+
+  /* ========== SLIDE 1: TITLE ========== */
+  .s1 {
+    background: var(--ink);
+    color: #fff;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 96px;
+  }
+  .s1 .brand { color: rgba(255,255,255,0.6); }
+  .s1 .brand strong { color: var(--gold-soft); }
+  .s1 .slide-num { color: rgba(255,255,255,0.4); }
+  .s1 .slide-num span { color: var(--gold-soft); }
+  .s1 .label {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+  }
+  .s1 h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(56px, 6.5vw, 96px);
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    max-width: 1100px;
+  }
+  .s1 h1 em {
+    font-style: italic;
+    color: var(--gold-soft);
+  }
+  .s1 .meta {
+    margin-top: 48px;
+    display: flex;
+    gap: 48px;
+    font-size: 14px;
+  }
+  .s1 .meta div { display: flex; flex-direction: column; gap: 4px; }
+  .s1 .meta .l {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  .s1 .meta .v {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--gold-soft);
+  }
+
+  /* ========== SLIDE 2: THE PROBLEM ========== */
+  .s2 {
+    flex-direction: row;
+    padding: 64px;
+    gap: 64px;
+    align-items: center;
+  }
+  .s2 .left { flex: 1; }
+  .s2 .right { flex: 1.1; }
+  .s2 .label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .s2 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 4.4vw, 64px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+  .s2 h2 em { font-style: italic; color: var(--gold); }
+  .s2 .caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--muted);
+    margin-top: 28px;
+    line-height: 1.5;
+    max-width: 480px;
+  }
+  .s2 .mock {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(15,46,42,0.18);
+    aspect-ratio: 16/10;
+    background: linear-gradient(135deg, #2d4a44 0%, #4a6b65 100%);
+    position: relative;
+  }
+  .s2 .mock::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 70%, rgba(15,46,42,0.4) 0%, transparent 60%);
+  }
+  .s2 .mock-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 48px;
+    color: #fff;
+  }
+  .s2 .mock-overlay .stack {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    line-height: 1.15;
+    opacity: 0.55;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .s2 .mock-overlay .nudge {
+    margin-top: 18px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .s2 .mock-overlay .pill {
+    font-size: 11px;
+    background: rgba(15,46,42,0.6);
+    padding: 6px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.06em;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .s2 .annot {
+    position: absolute;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 8px 14px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+  .s2 .annot.a1 { top: 38%; left: 8%; transform: rotate(-3deg); }
+  .s2 .annot.a2 { top: 62%; right: 6%; transform: rotate(2deg); }
+
+  /* ========== SLIDE 3: THE MATH (with cited sources) ========== */
+  .s3-math {
+    background: var(--ink);
+    color: #fff;
+    padding: 40px 64px;
+    justify-content: flex-start;
+  }
+  .s3-math .brand, .s3-math .slide-num { color: rgba(255,255,255,0.5); }
+  .s3-math .slide-num span, .s3-math .brand strong { color: var(--gold-soft); }
+  .s3-math .label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 16px;
+    margin-bottom: 12px;
+  }
+  .s3-math h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 500;
+    line-height: 1.05;
+    margin-bottom: 28px;
+    max-width: 900px;
+  }
+  .s3-math h2 em { color: var(--gold-soft); font-style: italic; }
+
+  /* Anchor row — three real-number cells */
+  .math-anchor {
+    margin-bottom: 22px;
+  }
+  .math-anchor-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+  .math-anchor-cell {
+    padding: 18px 20px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+  }
+  .math-anchor-cell:last-child { border-right: none; }
+  .ma-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    color: var(--gold-soft);
+    line-height: 1;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .ma-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 8px;
+  }
+  .ma-cite {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--gold);
+    line-height: 1.3;
+  }
+
+  /* The math chain */
+  .math-chain {
+    background: rgba(201,164,73,0.08);
+    border: 1px solid rgba(201,164,73,0.25);
+    border-radius: 4px;
+    padding: 22px 28px;
+    margin-bottom: 16px;
+  }
+  .math-chain-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: rgba(255,255,255,0.85);
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .math-chain-title em {
+    color: var(--gold-soft);
+    font-style: italic;
+  }
+  .math-equation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .me-term {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 110px;
+  }
+  .me-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    color: var(--gold-soft);
+    line-height: 1;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .me-term.me-result .me-num {
+    color: var(--gold);
+    font-size: 44px;
+  }
+  .me-lab {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    text-align: center;
+    line-height: 1.3;
+  }
+  .me-op {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: rgba(255,255,255,0.4);
+  }
+  .math-chain-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .math-against {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(255,255,255,0.75);
+  }
+  .math-against strong {
+    color: #fff;
+    font-style: normal;
+    font-weight: 500;
+  }
+  .math-payback {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .mp-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .mp-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .mp-tail {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* CTA block on final slide — two-path action */
+  .cta-block {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    margin-bottom: 24px;
+  }
+  .cta-block-title {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .cta-paths {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .cta-path {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 20px 24px;
+    border-radius: 4px;
+  }
+  .cta-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .cta-path h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .cta-path p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.55;
+  }
+
+  /* ========== SLIDE 9: METHODOLOGY ========== */
+  .s-method { padding: 56px 64px; }
+  .s-method .label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .s-method h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 3.8vw, 56px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 36px;
+  }
+  .s-method h2 em { font-style: italic; color: var(--gold); }
+  .method-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 24px;
+  }
+  .method-col {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    padding: 28px;
+    border-radius: 4px;
+  }
+  .method-col.method-measured {
+    border-left: 3px solid #3a7a3a;
+  }
+  .method-col.method-estimated {
+    border-left: 3px solid var(--gold);
+  }
+  .method-tag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .method-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .method-col li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .method-col li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .method-col li strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .method-col li span {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .method-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.55;
+    padding: 16px 24px;
+    background: var(--paper);
+    border-left: 2px solid var(--gold);
+    max-width: 100%;
+  }
+
+  /* small italic disclaimer footnote on slides 3 + 4 */
+  .est-disclaimer {
+    margin-top: 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.02em;
+    text-align: center;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+  }
+  .est-disclaimer.on-paper {
+    color: var(--muted);
+  }
+
+  /* ========== SLIDE 4: AUDIT (real Lighthouse + AI data) ========== */
+  .s4.audit-slide-real { padding: 56px 64px; }
+  .audit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: 28px 0;
+  }
+  .audit-card {
+    padding: 24px 28px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+  }
+  .audit-card:nth-child(3n) { border-right: none; }
+  .audit-card:nth-last-child(-n+3) { border-bottom: none; }
+  .audit-score {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px;
+    line-height: 1;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .audit-score-x {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    color: #b04545;
+    line-height: 1;
+    margin-bottom: 4px;
+    margin-top: 8px;
+  }
+  .audit-score.perf-bad { color: #b04545; }
+  .audit-score.perf-mid { color: var(--gold); }
+  .audit-score.perf-good { color: #3a7a3a; }
+  .audit-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+    margin: 8px 0 6px;
+  }
+  .audit-note {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.4;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+  .audit-quote {
+    background: var(--cream);
+    border-left: 3px solid var(--gold);
+    padding: 22px 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--ink);
+    line-height: 1.55;
+    font-style: italic;
+    margin-top: 24px;
+  }
+  .audit-quote cite {
+    display: block;
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+
+  /* ========== SLIDE 5: 5 LEAKS ========== */
+  .s4 .label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .s4 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 3.8vw, 56px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 48px;
+    max-width: 900px;
+  }
+  .s4 h2 em { font-style: italic; color: var(--gold); }
+  .s4 .leaks {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .s4 .leak {
+    padding: 32px 24px;
+    border-right: 1px solid var(--line);
+  }
+  .s4 .leak:last-child { border-right: none; }
+  .s4 .leak .n {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .s4 .leak h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .s4 .leak p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .s4 .leak-cite {
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+  }
+
+  /* ========== SLIDE 5: DEMO ========== */
+  .s5 {
+    background: var(--ink);
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .s5 .brand, .s5 .slide-num { color: rgba(255,255,255,0.5); }
+  .s5 .slide-num span, .s5 .brand strong { color: var(--gold-soft); }
+  .s5 .label {
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+  }
+  .s5 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(64px, 6.5vw, 100px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    max-width: 1100px;
+    margin-bottom: 32px;
+  }
+  .s5 h2 em { font-style: italic; color: var(--gold-soft); }
+  .s5 .sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: rgba(255,255,255,0.7);
+    max-width: 720px;
+    line-height: 1.5;
+    margin-bottom: 56px;
+  }
+  .s5 .flow {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--gold-soft);
+  }
+  .s5 .flow .step {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 14px 22px;
+    border-radius: 2px;
+    letter-spacing: 0.02em;
+  }
+  .s5 .flow .arrow { color: rgba(255,255,255,0.3); font-size: 24px; }
+  .s5 .timer {
+    margin-top: 48px;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 10px 24px;
+    border-radius: 2px;
+  }
+
+  /* ========== SLIDE 6: FLEX ========== */
+  .s6 { padding: 64px; gap: 0; }
+  .s6 .stack { max-width: 800px; margin: 0 auto; }
+  .s6 .label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .s6 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 5vw, 76px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+  }
+  .s6 h2 em { font-style: italic; color: var(--gold); }
+  .s6 .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 26px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 36px;
+    max-width: 680px;
+  }
+  .s6 .quote {
+    background: var(--cream);
+    border-left: 3px solid var(--gold);
+    padding: 28px 32px;
+    margin-top: 40px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--ink);
+    line-height: 1.5;
+    font-style: italic;
+  }
+  .s6 .quote cite {
+    display: block;
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 14px;
+  }
+
+  /* ========== SLIDE 7: PROPOSAL ========== */
+  .s7 .label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .s7 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 3.8vw, 56px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 40px;
+  }
+  .s7 h2 em { font-style: italic; color: var(--gold); }
+  .s7 .phases {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .s7 .phase {
+    padding: 28px 28px;
+    border-right: 1px solid var(--line);
+  }
+  .s7 .phase:last-child { border-right: none; }
+  .s7 .phase-tag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--gold-soft);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .s7 .phase h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    color: var(--ink);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .s7 .phase .timing {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+  }
+  .s7 .phase ul {
+    list-style: none;
+    margin: 14px 0;
+  }
+  .s7 .phase li {
+    font-size: 13px;
+    color: var(--ink);
+    padding: 5px 0;
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .s7 .phase li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .s7 .phase .price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--gold);
+    font-weight: 500;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+  }
+  .s7 .phase .price small {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+  }
+  .s7 .retainer {
+    margin-top: 32px;
+    padding: 20px 28px;
+    background: var(--cream);
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .s7 .retainer .label-sm {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .s7 .retainer h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .s7 .retainer p { font-size: 13px; color: var(--muted); margin-top: 4px; max-width: 480px; }
+  .s7 .retainer .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .s7 .retainer .num small {
+    font-size: 14px;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ========== SLIDE 8: ASK ========== */
+  .s8 { padding: 64px; }
+  .s8 .label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .s8 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 4.8vw, 72px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 48px;
+    max-width: 900px;
+  }
+  .s8 h2 em { font-style: italic; color: var(--gold); }
+  .s8 .asks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .s8 .ask {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 36px 32px;
+    position: relative;
+  }
+  .s8 .ask .n {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    color: var(--gold);
+    opacity: 0.4;
+    line-height: 1;
+    font-weight: 500;
+  }
+  .s8 .ask h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 14px;
+    max-width: 220px;
+  }
+  .s8 .ask p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .s8 .timeline {
+    margin-top: 48px;
+    padding: 24px 32px;
+    background: var(--ink);
+    border-radius: 4px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .s8 .timeline strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--gold-soft);
+    font-weight: 500;
+  }
+  .s8 .timeline span { font-size: 13px; color: rgba(255,255,255,0.7); }
+
+  /* ========== SLIDE 9: WHY ME ========== */
+  .s9 {
+    background: var(--ink);
+    color: #fff;
+    padding: 56px 96px;
+    justify-content: flex-start;
+  }
+  .s9 .brand, .s9 .slide-num { color: rgba(255,255,255,0.5); }
+  .s9 .slide-num span, .s9 .brand strong { color: var(--gold-soft); }
+  .s9 .label {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 24px;
+    margin-bottom: 18px;
+  }
+  .s9 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 4.4vw, 60px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    max-width: 1000px;
+    margin-bottom: 28px;
+  }
+  .s9 h2 em { font-style: italic; color: var(--gold-soft); }
+  .s9 .points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 56px;
+    margin-top: 8px;
+    max-width: 1100px;
+  }
+  .s9 .point {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .s9 .point .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+  .s9 .point h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .s9 .point p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+  }
+  .s9 .closing {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .s9 .closing .signature {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--gold-soft);
+    font-style: italic;
+  }
+  .s9 .closing .signature small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+  .s9 .closing .contact {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    text-align: right;
+    line-height: 1.7;
+  }
+  .s9 .closing .contact strong { color: var(--gold-soft); font-weight: 500; }
+
+  /* ========== PROGRESS ========== */
+  .progress {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--gold);
+    transition: width .3s ease;
+    z-index: 100;
+  }
+
+  /* ========== KEYBOARD HINT ========== */
+  .key-overlay {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    background: rgba(15,46,42,0.85);
+    color: rgba(255,255,255,0.8);
+    padding: 8px 14px;
+    border-radius: 2px;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    backdrop-filter: blur(8px);
+    z-index: 100;
+    font-family: 'Inter', sans-serif;
+    transition: opacity .3s;
+  }
+  .key-overlay.fade { opacity: 0; pointer-events: none; }
+  .key-overlay kbd {
+    background: rgba(255,255,255,0.12);
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin: 0 2px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+  }
+
+  @media (max-width: 1100px) {
+    .slide { padding: 32px; }
+    .s1 { padding-left: 48px; }
+    .s2 { flex-direction: column; gap: 32px; padding: 48px 32px; }
+    .s4 .leaks { grid-template-columns: repeat(2, 1fr); }
+    .s4 .leak { border-right: none; border-bottom: 1px solid var(--line); }
+    .s7 .phases { grid-template-columns: 1fr; }
+    .s7 .phase { border-right: none; border-bottom: 1px solid var(--line); }
+    .s8 .asks { grid-template-columns: 1fr; }
+    .s9 .points { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- =========================================================
+       SLIDE 1 — TITLE
+       ========================================================= -->
+  <section class="slide s1 active" data-slide="1">
+    <div class="brand"><strong>Phuture Digital</strong> · for Africrest Properties</div>
+    <div class="slide-num"><span>01</span> / 11</div>
+    <div class="label">A conversion audit</div>
+    <h1>africrestresi<wbr/>.co.za<br/><em>has five leaks.</em></h1>
+    <div class="meta">
+      <div><span class="l">Prepared for</span><span class="v">Justin Blend, Africrest</span></div>
+      <div><span class="l">By</span><span class="v">Tlotliso Mosiana</span></div>
+      <div><span class="l">Date</span><span class="v">May 2026</span></div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 2 — THE PROBLEM
+       ========================================================= -->
+  <section class="slide s2" data-slide="2">
+    <div class="brand"><strong>Phuture Digital</strong> · for Africrest Properties</div>
+    <div class="slide-num"><span>02</span> / 11</div>
+
+    <div class="left">
+      <div class="label">Where it starts</div>
+      <h2>A prospect can't read your <em>top fold</em>.</h2>
+      <p class="caption">The hero overlays the words "Security · Service · Value · Facilities · Location" on a busy pool image. White text on a bright background. On mobile, it's worse.</p>
+    </div>
+
+    <div class="right">
+      <div class="mock">
+        <div class="mock-overlay">
+          <div class="stack">
+            Security<br/>· Value for money<br/>· Service<br/>· Facilities<br/>· Location
+          </div>
+          <div class="nudge">
+            <span class="pill">Find an apartment</span>
+            <span class="pill">Buildings ▾</span>
+          </div>
+        </div>
+        <div class="annot a1">↑ illegible</div>
+        <div class="annot a2">↓ no filter, no map, 15 cards below</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 3 — THE MATH (real numbers, cited sources)
+       ========================================================= -->
+  <section class="slide s3-math" data-slide="3">
+    <div class="brand"><strong>Phuture Digital</strong> · for Africrest Properties</div>
+    <div class="slide-num"><span>03</span> / 11</div>
+    <div class="label">The math, with sources</div>
+    <h2>What's <em>two extra leases</em> per month worth?</h2>
+
+    <div class="math-anchor">
+      <div class="math-anchor-row">
+        <div class="math-anchor-cell">
+          <div class="ma-num">7,600</div>
+          <div class="ma-label">Completed apartments</div>
+          <div class="ma-cite">Grant Friedman, Africrest Director · Enterprise Africa, Feb 2026</div>
+        </div>
+        <div class="math-anchor-cell">
+          <div class="ma-num">~5%</div>
+          <div class="ma-label">National vacancy rate</div>
+          <div class="ma-cite">TPN Vacancy Survey, Q1 2026</div>
+        </div>
+        <div class="math-anchor-cell">
+          <div class="ma-num">R6,890</div>
+          <div class="ma-label">Median listed rent</div>
+          <div class="ma-cite">Africrest listings on Property24, May 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="math-chain">
+      <div class="math-chain-title">If a better-converting site recovers just <em>two extra leases per month</em>:</div>
+      <div class="math-equation">
+        <div class="me-term">
+          <div class="me-num">2</div>
+          <div class="me-lab">Extra leases<br/>per month</div>
+        </div>
+        <div class="me-op">×</div>
+        <div class="me-term">
+          <div class="me-num">12</div>
+          <div class="me-lab">Months</div>
+        </div>
+        <div class="me-op">×</div>
+        <div class="me-term">
+          <div class="me-num">R6,890</div>
+          <div class="me-lab">Median rent</div>
+        </div>
+        <div class="me-op">=</div>
+        <div class="me-term me-result">
+          <div class="me-num">R165k</div>
+          <div class="me-lab">Recovered annually</div>
+        </div>
+      </div>
+      <div class="math-chain-bottom">
+        <div class="math-against">Against a Phase 1 investment of <strong>R95k</strong>:</div>
+        <div class="math-payback">
+          <span class="mp-label">Payback period</span>
+          <span class="mp-num">~7 months</span>
+          <span class="mp-tail">on the lowest-end recovery scenario</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="est-disclaimer">"Two extra leases" is a deliberately conservative target — that's roughly 0.0003 of Africrest's monthly portfolio churn. Real recovery is likely higher; we instrument from week 1 so actual lift is measurable by week 8 of Phase 1. Method &amp; sources detailed on slide 9.</p>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 4 — REAL AUDIT (powered by Phuture pipeline)
+       ========================================================= -->
+  <section class="slide s4" data-slide="4">
+    <div class="brand"><strong>Phuture Digital</strong> · for Africrest Properties</div>
+    <div class="slide-num"><span>04</span> / 11</div>
+    <div class="label">Our audit</div>
+    <h2>Lighthouse + AI readability on <em>africrestresi.co.za</em>.</h2>
+
+    <div class="audit-grid">
+      <div class="audit-card">
+        <div class="audit-score perf-bad">44</div>
+        <div class="audit-label">Performance</div>
+        <div class="audit-note">Slow on mobile data — punishes SA users on 3G/4G</div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-score perf-mid">85</div>
+        <div class="audit-label">SEO</div>
+        <div class="audit-note">Decent technical, no structured data</div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-score perf-bad">28</div>
+        <div class="audit-label">AI readability</div>
+        <div class="audit-note">ChatGPT/Perplexity can't understand the site</div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-score-x">✗</div>
+        <div class="audit-label">Schema.org</div>
+        <div class="audit-note">No structured data — invisible to LLMs</div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-score-x">✗</div>
+        <div class="audit-label">Open Graph</div>
+        <div class="audit-note">No preview when shared on WhatsApp / social</div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-score-x">✗</div>
+        <div class="audit-label">Meta description</div>
+        <div class="audit-note">Google snippets are auto-guessed</div>
+      </div>
+    </div>
+
+    <div class="audit-quote">
+      "Title tag is just 'Africrest Residential' with no description or location. No structured data for LocalBusiness or RealEstateAgent. Body copy and headings aren't visible in the fetched markup — AI tools have almost nothing to index."
+      <cite>— Phuture Digital automated audit, 2 May 2026</cite>
+    </div>
+
+    <p class="est-disclaimer on-paper">Lighthouse + AI readability scores are live measurements at audit timestamp. Predicted lift from remediation is an estimate using Google Core Web Vitals / HousingWire benchmarks. Full method &amp; sources on slide 9.</p>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 5 — THE 5 LEAKS (technically backed)
+       ========================================================= -->
+  <section class="slide s4" data-slide="5">
+    <div class="brand"><strong>Phuture Digital</strong> · for Africrest Properties</div>
+    <div class="slide-num"><span>05</span> / 11</div>
+    <div class="label">Forensic findings</div>
+    <h2>Five leaks. <em>Each one measurable.</em></h2>
+
+    <div class="leaks">
+      <div class="leak">
+        <div class="n">01</div>
+        <h3>Hero unreadable</h3>
+        <p>Lighthouse contrast ratio fails WCAG AA on hero text overlay. Mobile usability score 67/100.</p>
+        <div class="leak-cite">Source: Lighthouse audit, 2 May 2026</div>
+      </div>
+      <div class="leak">
+        <div class="n">02</div>
+        <h3>Zero filtering UX</h3>
+        <p>15 building cards rendered as static DOM nodes. No JavaScript filtering, no map view, no availability state. Discovery requires sequential page loads through all 15 micro-sites.</p>
+        <div class="leak-cite">Source: HTML inspection, africrestresi.co.za/</div>
+      </div>
+      <div class="leak">
+        <div class="n">03</div>
+        <h3>11 manual application steps</h3>
+        <p>Enquiry form → emailed application → manual document review → POP via email → counter-signed lease → on-site inspection. 1-2 day processing per stage. Industry digital benchmark: 15 minutes end-to-end.</p>
+        <div class="leak-cite">Source: africrestresi.co.za apply flow, published</div>
+      </div>
+      <div class="leak">
+        <div class="n">04</div>
+        <h3>13+ split domains</h3>
+        <p>themaestro.co.za, prestigesandton.co.za, maverickapartments.co.za, eclipseapartments.co.za, villagebramley.co.za, thelandmark.co, thetitan.co.za, theleo.co.za, legacyapartments.co.za, encoreapartments.co.za… SEO authority fragmented across 13+ root domains.</p>
+        <div class="leak-cite">Source: footer audit, all building micro-sites</div>
+      </div>
+      <div class="leak">
+        <div class="n">05</div>
+        <h3>FLEX absent from metadata</h3>
+        <p>Penalty-free inter-building relocation — your strongest differentiator vs. private landlords — appears 0 times in title tags, 0 times in meta descriptions, 0 times in H1s across the homepage and 15 building pages.</p>
+        <div class="leak-cite">Source: meta-tag scan, all pages</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 5 — DEMO MOMENT
+       ========================================================= -->
+  <section class="slide s5" data-slide="6">
+    <div class="brand"><strong>Phuture Digital</strong> · for Africrest Properties</div>
+    <div class="slide-num"><span>06</span> / 11</div>
+    <div class="label">Show, don't tell</div>
+    <h2>Here's the <em>fix</em>.</h2>
+    <p class="sub">A working concept site, built on real Africrest data, restructured for conversion. Same brand, same content — 90 second click-through.</p>
+
+    <div class="flow">
+      <span class="step">Home</span>
+      <span class="arrow">→</span>
+      <span class="step">Filter Sandton</span>
+      <span class="arrow">→</span>
+      <span class="step">The Maestro</span>
+      <span class="arrow">→</span>
+      <span class="step">Unit #304</span>
+      <span class="arrow">→</span>
+      <span class="step">Apply</span>
+    </div>
+    <div class="timer">90 seconds · zero phone calls</div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 6 — THE FLEX MOMENT
+       ========================================================= -->
+  <section class="slide s6" data-slide="7">
+    <div class="brand"><strong>Phuture Digital</strong> · for Africrest Properties</div>
+    <div class="slide-num"><span>07</span> / 11</div>
+    <div class="stack">
+      <div class="label">The asset you're not selling</div>
+      <h2>You let people <em>switch buildings</em> mid-lease, free.</h2>
+      <p class="lead">No competitor does that. No agency. No body corporate. No private landlord. It's the most underused line in your marketing.</p>
+      <p style="font-size:15px; color:var(--muted); line-height:1.7; max-width:700px;">On the new site, FLEX is on the homepage, the about page, the FAQ, and built into the application form ("Plans changed mid-lease? You move free."). It becomes the reason people pick Africrest over the place down the road.</p>
+
+      <div class="quote">
+        Most landlords penalise you for breaking your lease. Africrest helps you move.
+        <cite>— what the homepage should say</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 7 — THE PROPOSAL
+       ========================================================= -->
+  <section class="slide s7" data-slide="8">
+    <div class="brand"><strong>Phuture Digital</strong> · for Africrest Properties</div>
+    <div class="slide-num"><span>08</span> / 11</div>
+    <div class="label">Scope &amp; investment</div>
+    <h2>Three phases. <em>Milestone-billed.</em></h2>
+
+    <div class="phases">
+      <div class="phase">
+        <span class="phase-tag">Phase 1 · Q3</span>
+        <h3>Marketing site rebuild</h3>
+        <div class="timing">10–12 weeks</div>
+        <ul>
+          <li>Discovery + content strategy (2 weeks)</li>
+          <li>Design system + page library (3 weeks)</li>
+          <li>Build, QA, mobile + accessibility audit (4 weeks)</li>
+          <li>Propficient feed integration + content load (2 weeks)</li>
+          <li>UAT, stakeholder review, launch (1 week)</li>
+        </ul>
+        <div class="price">R95k<small>Fixed scope, milestone-billed</small></div>
+      </div>
+      <div class="phase">
+        <span class="phase-tag">Phase 2 · After launch</span>
+        <h3>Online application + e-sign</h3>
+        <div class="timing">8–10 weeks</div>
+        <ul>
+          <li>Replace steps 4–7 of the 11-step process</li>
+          <li>Document upload, e-signature, POP capture</li>
+          <li>Two-way Propficient integration with webhooks</li>
+          <li>POPIA-compliant data flow + audit log</li>
+          <li>Tenants apply in 15 mins, not 4 days</li>
+        </ul>
+        <div class="price">R75k<small>Fixed scope, milestone-billed</small></div>
+      </div>
+      <div class="phase">
+        <span class="phase-tag">Phase 3 · 2027</span>
+        <h3>Resident portal</h3>
+        <div class="timing">Separate scope</div>
+        <ul>
+          <li>Maintenance tickets · statements</li>
+          <li>FLEX inter-building move requests</li>
+          <li>Building announcements</li>
+          <li>Scoped after 60 days of Phase 1 + 2 data</li>
+        </ul>
+        <div class="price">TBC<small>R85–110k typical range</small></div>
+      </div>
+    </div>
+
+    <div class="retainer">
+      <div>
+        <div class="label-sm">Post-launch</div>
+        <h4>Ongoing retainer</h4>
+        <p>New-building rollouts · monthly Lighthouse + AI-readability report · quarterly CRO testing · priority bug-fix SLA.</p>
+      </div>
+      <div class="num">R9k<small>/month</small></div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 9 — METHODOLOGY (NEW — disclaimer / transparency)
+       ========================================================= -->
+  <section class="slide s-method" data-slide="9">
+    <div class="brand"><strong>Phuture Digital</strong> · for Africrest Properties</div>
+    <div class="slide-num"><span>09</span> / 11</div>
+    <div class="label">Method &amp; assumptions</div>
+    <h2>What we <em>measured</em>, what we <em>estimated</em>.</h2>
+
+    <div class="method-grid">
+      <div class="method-col method-measured">
+        <div class="method-tag">Measured · verifiable today</div>
+        <ul>
+          <li><strong>Lighthouse Performance: 44/100</strong><span>Live audit, 2 May 2026 · africrestresi.co.za</span></li>
+          <li><strong>AI readability: 28/100</strong><span>Internal Phuture pipeline · structured-data + meta-tag scan</span></li>
+          <li><strong>13+ split domains</strong><span>Footer audit across all 15 building micro-sites · domain list named in slide 5</span></li>
+          <li><strong>11-step apply flow</strong><span>Counted from africrestresi.co.za published apply page</span></li>
+          <li><strong>~7,600 completed apartments</strong><span>Grant Friedman, Africrest Director · Enterprise Africa, Feb 2026</span></li>
+          <li><strong>Median listed rent: R6,890</strong><span>Africrest active listings · Property24, May 2026</span></li>
+        </ul>
+      </div>
+      <div class="method-col method-estimated">
+        <div class="method-tag">Estimated · range, with sources</div>
+        <ul>
+          <li><strong>~5% national vacancy rate</strong><span>TPN Vacancy Survey, Q1 2026 · used for portfolio churn estimate</span></li>
+          <li><strong>30–50% mobile conversion lift</strong><span>Based on Lighthouse 44→85 industry benchmark · Google Core Web Vitals research, HousingWire 2024 PropTech report</span></li>
+          <li><strong>15–25% application-completion lift</strong><span>From 11 steps → 4 phases · Baymard Institute checkout-friction research</span></li>
+          <li><strong>2 extra leases per month (target)</strong><span>Conservative threshold against ~30 estimated monthly portfolio churn (7,600 units × 5% vacancy ÷ 12)</span></li>
+          <li><strong>R165k+ annual recovery</strong><span>2 leases × 12 months × R6,890 median rent. Real recovery likely higher — depends on Africrest's actual traffic, conversion rate, and rent mix</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="method-note">
+      Estimates assume Africrest's leasing team responds to enquiries within 24 hours and that current SEO authority is preserved during migration. We instrument from day 1 so actual lift is visible in week 8 of Phase 1, not at launch.
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 10 — THE ASK
+       ========================================================= -->
+  <section class="slide s8" data-slide="10">
+    <div class="brand"><strong>Phuture Digital</strong> · for Africrest Properties</div>
+    <div class="slide-num"><span>10</span> / 11</div>
+    <div class="label">What we need from you</div>
+    <h2>Three inputs. <em>That's it.</em></h2>
+
+    <div class="asks">
+      <div class="ask">
+        <span class="n">01</span>
+        <h3>Brand &amp; photo library</h3>
+        <p>Professional photography across the 15 buildings, your brand guidelines, and any existing copy. We'll commission supplementary photography in Phase 1 if gaps emerge.</p>
+      </div>
+      <div class="ask">
+        <span class="n">02</span>
+        <h3>Propficient API access</h3>
+        <p>Read access initially (Phase 1 — daily availability sync), upgraded to read/write in Phase 2 for the application pipeline. Your IT team co-signs the integration.</p>
+      </div>
+      <div class="ask">
+        <span class="n">03</span>
+        <h3>One named stakeholder</h3>
+        <p>A leasing or marketing lead on your side as our single point of contact for sign-offs. Weekly 30-min checkpoint, decisions inside 48 hours. No committee design.</p>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div>
+        <strong>SoW signed → staging URL in 3 weeks.</strong>
+        <span style="display:block; margin-top:4px;">Phase 1 launch in 10–12 weeks. Phase 2 launch a quarter later.</span>
+      </div>
+      <div style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-soft);">Realistic. Milestone-billed. Fixed scope.</div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SLIDE 11 — WHY PHUTURE DIGITAL
+       ========================================================= -->
+  <section class="slide s9" data-slide="11">
+    <div class="brand"><strong>Phuture Digital</strong> · for Africrest Properties</div>
+    <div class="slide-num"><span>11</span> / 11</div>
+    <div class="label">Why Phuture Digital</div>
+    <h2>A studio built for <em>SA property</em>.</h2>
+
+    <div class="points">
+      <div class="point">
+        <div class="dot"></div>
+        <div>
+          <h3>Diagnosis-led, not deck-led.</h3>
+          <p>Every engagement starts with a real audit. The 44/100 Lighthouse score and 28/100 AI readability finding on slide 4 came from our internal pipeline, not a sales pitch. We bring the same instrumentation to your build.</p>
+        </div>
+      </div>
+      <div class="point">
+        <div class="dot"></div>
+        <div>
+          <h3>Built for the SA property stack.</h3>
+          <p>Propficient, MRI, PayProp. POPIA. B-BBEE-aligned procurement. WhatsApp-first prospect flows. PayShap. We've built for the South African market specifically — not generic SaaS templates retrofitted for ZAR.</p>
+        </div>
+      </div>
+      <div class="point">
+        <div class="dot"></div>
+        <div>
+          <h3>Working concept already exists.</h3>
+          <p>What you've walked through today is real, deployable code — not a Figma mockup. From signed SoW to staging URL is 3 weeks, not 3 months. The runway for stakeholder review is built into the timeline, not bolted on at the end.</p>
+        </div>
+      </div>
+      <div class="point">
+        <div class="dot"></div>
+        <div>
+          <h3>One principal, accountable.</h3>
+          <p>You won't be handed off to an account manager who didn't write the proposal. Tlotliso owns the engagement end-to-end, with a small senior delivery team behind. Direct line, weekly checkpoints, fixed scope.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-block">
+      <div class="cta-block-title">Two ways to take this further</div>
+      <div class="cta-paths">
+        <div class="cta-path">
+          <div class="cta-num">01</div>
+          <h4>30-min walkthrough</h4>
+          <p>Reply with two times that work this week or next. We'll walk you and your marketing lead through the audit, the demo, and the SoW.</p>
+        </div>
+        <div class="cta-path">
+          <div class="cta-num">02</div>
+          <h4>Or just keep clicking</h4>
+          <p>The demo is yours to share. Forward this deck and the live demo URL to your marketing lead. We'll be ready when you are.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="closing">
+      <div class="signature">
+        Phuture Digital
+        <small>Tlotliso Mosiana · Principal</small>
+      </div>
+      <div class="contact">
+        <strong>tlotlisomosiana@phuturedigital.co.za</strong><br/>
+        Johannesburg · phuturedigital.co.za<br/>
+        Demo: <strong>africrest-pitch.vercel.app</strong>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="progress" id="progress"></div>
+<div class="key-overlay" id="keyOverlay">
+  <kbd>←</kbd> <kbd>→</kbd> to navigate · <kbd>F</kbd> fullscreen · <kbd>Esc</kbd> exit
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  const progress = document.getElementById('progress');
+  const overlay = document.getElementById('keyOverlay');
+  let current = 0;
+
+  function show(idx) {
+    if (idx < 0 || idx >= total) return;
+    slides[current].classList.remove('active');
+    slides[idx].classList.add('active');
+    current = idx;
+    progress.style.width = ((idx + 1) / total * 100) + '%';
+    // Reset scroll on the new slide
+    slides[idx].scrollTop = 0;
+  }
+
+  // Initialize progress
+  progress.style.width = (1 / total * 100) + '%';
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault();
+      show(current + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      show(current - 1);
+    } else if (e.key === 'Home') {
+      show(0);
+    } else if (e.key === 'End') {
+      show(total - 1);
+    } else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  });
+
+  // Click to advance
+  document.addEventListener('click', e => {
+    if (e.target.closest('a, button, input, select, textarea, kbd')) return;
+    show(current + 1);
+  });
+
+  // Fade keyboard hint after 4s
+  setTimeout(() => overlay.classList.add('fade'), 4000);
+  document.addEventListener('mousemove', () => {
+    overlay.classList.remove('fade');
+    clearTimeout(window.fadeTimer);
+    window.fadeTimer = setTimeout(() => overlay.classList.add('fade'), 3000);
+  });
+</script>
+
+</body>
+</html>
