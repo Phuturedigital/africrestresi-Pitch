@@ -209,3 +209,170 @@ section.section { padding: 80px 32px; }
   section.section { padding: 56px 24px; }
   .page-header { padding: 40px 24px 56px; }
 }
+
+/* ============ COMPACT MOBILE OVERRIDES (≤640px) ============
+   Halves vertical scroll on phones without altering desktop. */
+@media (max-width: 640px) {
+  /* Two-column listings instead of stacked single column */
+  .building-grid,
+  .building-units .unit-grid,
+  .other-buildings .building-grid,
+  .units-page .unit-grid,
+  .unit-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+  .foot-inner { grid-template-columns: 1fr 1fr !important; gap: 24px 18px !important; }
+
+  /* Tighter section rhythm */
+  section.section { padding: 36px 18px !important; }
+  .section-head { margin-bottom: 18px; }
+  .section-head h2 { font-size: 26px !important; }
+  .section-head p { font-size: 13px; max-width: none; }
+
+  /* Page header compact */
+  .page-header { padding: 28px 18px 36px !important; border-bottom-width: 3px; }
+  .page-header h1 { font-size: clamp(26px, 7vw, 34px); }
+  .page-header p.lead { font-size: 13px; margin-top: 8px; }
+  .crumb { font-size: 10px; margin-bottom: 10px; }
+
+  /* Building cards compact */
+  .b-img { aspect-ratio: 4/3; }
+  .b-body { padding: 12px 12px 14px; }
+  .b-name { font-size: 17px; line-height: 1.15; }
+  .b-addr { font-size: 11px; }
+  .b-row { margin-top: 10px; padding-top: 10px; flex-wrap: wrap; gap: 6px; }
+  .b-price small { font-size: 9px; margin-bottom: 1px; }
+  .b-price strong { font-size: 18px; }
+  .b-avail { font-size: 10px; padding: 4px 8px; }
+  .b-badge, .b-area-tag { font-size: 9px; padding: 3px 7px; top: 8px; }
+  .b-badge { left: 8px; }
+  .b-area-tag { right: 8px; }
+
+  /* Unit cards compact */
+  .u-img { aspect-ratio: 1/1; }
+  .u-body { padding: 10px 11px 12px; }
+  .u-name { font-size: 11px; }
+  .u-type { font-size: 14px; line-height: 1.15; margin-top: 1px; }
+  .u-meta { font-size: 10px; gap: 6px; margin-top: 4px; }
+  .u-foot { margin-top: 8px; padding-top: 8px; }
+  .u-rent { font-size: 15px; }
+  .u-rent small { font-size: 9px; }
+  .u-cta { font-size: 9px; }
+  .u-tag { font-size: 9px; padding: 2px 6px; bottom: 6px; left: 6px; }
+
+  /* Footer trim */
+  footer { padding: 28px 18px 16px; font-size: 12px; }
+  footer h4 { font-size: 15px; margin-bottom: 8px; }
+  footer li { margin-bottom: 5px; }
+  .foot-bottom { flex-direction: column; gap: 6px; margin-top: 18px; padding-top: 14px; }
+
+  /* Demo banner trim */
+  .demo-banner { font-size: 10px; padding: 5px 10px; line-height: 1.35; }
+
+  /* Filters/chips compact */
+  .filters { margin-bottom: 16px; padding-bottom: 12px; gap: 6px; }
+  .chip { font-size: 11px; padding: 5px 10px; }
+
+  /* Nav compact */
+  .nav-inner { padding: 10px 16px; }
+  .logo { font-size: 18px; gap: 8px; }
+  .logo-mark { width: 26px; height: 26px; font-size: 13px; }
+  .logo-sub { display: none; }
+  .nav-cta { padding: 7px 12px; font-size: 11px; }
+
+  /* Buttons + form */
+  .btn { padding: 11px 18px; font-size: 11px; }
+  .form-field { margin-bottom: 12px; }
+  .form-field input, .form-field select, .form-field textarea { padding: 10px 12px; font-size: 13px; }
+  .form-field label { font-size: 11px; }
+  .form-field textarea { min-height: 80px; }
+
+  /* ---- Home page (index.html) ---- */
+  .hero { min-height: 340px !important; padding: 24px 18px 22px !important; }
+  .hero h1 { font-size: clamp(26px, 7vw, 34px) !important; }
+  .hero p.lead { font-size: 13px !important; margin-top: 10px !important; }
+  .search-bar { margin-top: 18px !important; padding: 6px !important; gap: 6px !important; grid-template-columns: 1fr 1fr !important; }
+  .search-field { padding: 8px 10px !important; }
+  .search-field label { font-size: 9px !important; }
+  .search-field select { font-size: 13px !important; }
+  .search-submit { padding: 10px !important; font-size: 11px !important; }
+  .hero-meta { margin-top: 12px !important; font-size: 11px !important; gap: 12px !important; }
+
+  .value-strip { padding: 24px 18px !important; }
+  .value-inner { grid-template-columns: repeat(2, 1fr) !important; gap: 18px 14px !important; }
+  .value-cell .num { font-size: 26px !important; margin-bottom: 4px !important; }
+  .value-cell h3 { font-size: 15px !important; margin-bottom: 4px !important; }
+  .value-cell p { font-size: 12px !important; line-height: 1.4 !important; }
+
+  .units-band { padding: 36px 18px !important; }
+  .units-foot { margin-top: 20px !important; }
+
+  .apply-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .a-step { padding: 16px 14px !important; border-right: 1px solid var(--line) !important; border-bottom: 1px solid var(--line) !important; }
+  .a-step:nth-child(2n) { border-right: none !important; }
+  .a-step:nth-last-child(-n+2) { border-bottom: none !important; }
+  .a-num { font-size: 30px !important; }
+  .a-title { font-size: 15px !important; margin-top: 6px !important; }
+  .a-desc { font-size: 12px !important; margin-top: 4px !important; line-height: 1.4 !important; }
+  .a-time { margin-top: 8px !important; font-size: 9px !important; padding: 3px 7px !important; }
+  .apply-cta { margin-top: 18px !important; gap: 8px !important; }
+
+  .about-strip { grid-template-columns: 1fr !important; }
+  .about-text { padding: 28px 18px !important; }
+  .about-text h2 { font-size: 26px !important; }
+  .about-text p { font-size: 13px !important; line-height: 1.55 !important; margin-top: 10px !important; }
+  .about-stats { margin-top: 16px !important; padding-top: 14px !important; }
+  .stat .n { font-size: 22px !important; }
+  .stat .l { font-size: 10px !important; }
+  .about-img { min-height: 160px !important; }
+
+  /* ---- Building detail (building.html) ---- */
+  .b-hero { height: 280px !important; }
+  .b-layout { padding: 24px 18px !important; gap: 22px !important; }
+  .building-units { padding: 32px 18px !important; }
+  .other-buildings { padding: 32px 18px !important; }
+  .sidebar-card { padding: 18px !important; position: static !important; top: auto !important; }
+  .fac { padding: 10px 12px !important; font-size: 12px !important; }
+  .facilities { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* ---- Unit detail (unit.html) ---- */
+  .gallery-hero { padding: 18px 18px 0 !important; }
+  .unit-layout { padding: 22px 18px 32px !important; gap: 22px !important; }
+  .unit-stats { grid-template-columns: repeat(4, 1fr) !important; padding: 14px 0 !important; margin-top: 18px !important; }
+  .unit-stat { padding: 4px 8px !important; font-size: 11px !important; }
+  .other-units { padding: 32px 18px !important; }
+  .floorplan { padding: 20px !important; }
+  .feature-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* ---- Units listing (units.html) ---- */
+  .units-page { padding: 22px 18px 32px !important; gap: 18px !important; }
+
+  /* ---- Apply page ---- */
+  .phases { grid-template-columns: repeat(2, 1fr) !important; }
+  .phase { padding: 16px 14px !important; border-right: 1px solid var(--line) !important; border-bottom: 1px solid var(--line) !important; }
+  .phase:nth-child(2n) { border-right: none !important; }
+  .phase:nth-last-child(-n+2) { border-bottom: none !important; }
+  .docs-section { padding: 32px 18px !important; }
+  .timeline { padding: 10px 0 !important; }
+
+  /* ---- About page ---- */
+  .editorial { padding: 32px 18px !important; }
+  .editorial .lead { font-size: 16px !important; }
+  .stats-band { padding: 32px 18px !important; }
+  .fundamentals { padding: 32px 18px !important; }
+  .fund-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .fund { padding: 16px 12px !important; border-right: 1px solid var(--line) !important; border-bottom: 1px solid var(--line) !important; }
+  .fund:nth-child(2n) { border-right: none !important; }
+  .fund:nth-last-child(-n+2) { border-bottom: none !important; }
+  .recognition { padding: 32px 18px !important; }
+  .testimonials { padding: 32px 18px !important; }
+  .testimonial-grid { grid-template-columns: 1fr !important; }
+  .two-col-text { padding: 32px 18px !important; }
+  .two-col-img { min-height: 160px !important; }
+  .about-cta { padding: 32px 18px !important; }
+
+  /* ---- Contact page ---- */
+  .contact-layout { padding: 24px 18px !important; gap: 22px !important; }
+  .contact-form-card { padding: 20px !important; }
+  .map-section { padding: 32px 18px !important; }
+  .map-vis { min-height: 180px !important; }
+  .quick-contact { grid-template-columns: repeat(2, 1fr) !important; }
+}
