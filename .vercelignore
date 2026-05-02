@@ -1,0 +1,13 @@
+# Exclude private pitch materials from the public deploy
+email-to-justin.md
+outreach-package.md
+scrape-africrest.js
+
+# Internal docs (still in git, not on the public URL)
+README.md
+DEPLOY.md
+
+# OS / editor
+.DS_Store
+*.swp
+*.html.bak

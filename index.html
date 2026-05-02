@@ -3,14 +3,59 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Africrest Properties — Find your home in Joburg</title>
+<title>Africrest · 15 lifestyle estates in Joburg · FLEX between any of them, free</title>
+<meta name="description" content="Africrest builds, owns and manages 15 lifestyle estates across Joburg. Live availability, fast application, and FLEX — move between buildings free, mid-lease." />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Africrest · 15 lifestyle estates in Joburg · FLEX between any of them, free" />
+<meta property="og:description" content="Africrest builds, owns and manages 15 lifestyle estates across Joburg. Live availability, fast application, and FLEX — move between buildings free, mid-lease." />
+<meta property="og:site_name" content="Africrest Properties" />
+<meta property="og:locale" content="en_ZA" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Africrest · 15 estates · FLEX between any of them, free" />
+<meta name="twitter:description" content="Joburg's largest built-to-rent portfolio. Move between any of our 15 buildings mid-lease, free of penalty." />
+
+<!-- JSON-LD: RealEstateAgent + FLEX policy -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "Africrest Properties",
+  "description": "Africrest builds, owns and manages 15 lifestyle estates across Johannesburg. FLEX lets residents move between any Africrest building mid-lease, free of penalty.",
+  "areaServed": [
+    { "@type": "City", "name": "Johannesburg" },
+    { "@type": "Place", "name": "Sandton" },
+    { "@type": "Place", "name": "Bryanston" },
+    { "@type": "Place", "name": "Sunninghill" },
+    { "@type": "Place", "name": "Ferndale" },
+    { "@type": "Place", "name": "Waverley" },
+    { "@type": "Place", "name": "Oaklands" },
+    { "@type": "Place", "name": "Milpark" },
+    { "@type": "Place", "name": "Marshalltown" },
+    { "@type": "Place", "name": "Bramley" }
+  ],
+  "knowsAbout": "Built-to-rent residential property in Johannesburg",
+  "numberOfItems": 15,
+  "makesOffer": {
+    "@type": "Offer",
+    "name": "FLEX — penalty-free portfolio mobility",
+    "description": "Africrest residents may move between any of the 15 Africrest buildings mid-lease, free of penalty. No early-exit fees, no forfeited deposit, no double rent. Subject to availability.",
+    "category": "Lease benefit",
+    "eligibleRegion": { "@type": "City", "name": "Johannesburg" }
+  }
+}
+</script>
+
 <link rel="stylesheet" href="styles.css" />
 <style>
   /* ---------- HERO ---------- */
   .hero {
     position: relative; min-height: 560px;
     background: linear-gradient(180deg, rgba(15,46,42,0.55), rgba(15,46,42,0.75)),
-                url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600') center/cover;
+                url('images/Cover-Photo-A.webp') center/cover;
     color: #fff;
     display: flex; flex-direction: column; justify-content: center;
     padding: 60px 32px 40px;
@@ -65,7 +110,7 @@
   .about-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; margin-top: 32px; gap: 0; max-width: 480px; border-top: 1px solid var(--line); padding-top: 24px; }
   .stat .n { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: var(--ink); font-weight: 500; }
   .stat .l { font-size: 12px; color: var(--muted); margin-top: 2px; }
-  .about-img { background: url('https://images.unsplash.com/photo-1567496898669-ee935f5f647a?w=900') center/cover; min-height: 480px; }
+  .about-img { background: url('images/6.webp') center/cover; min-height: 480px; }
 
   @media (max-width: 980px) {
     .value-inner { grid-template-columns: repeat(2, 1fr); gap: 32px; }
@@ -82,6 +127,28 @@
     .a-step { border-right: none; border-bottom: 1px solid var(--line); }
     .a-step:last-child { border-bottom: none; }
   }
+
+  /* ---------- FLEX SECTION ---------- */
+  .flex-section { background: var(--ink); color: #fff; padding: 80px 32px; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 4px solid var(--gold); }
+  .flex-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .flex-eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .flex-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 4.6vw, 64px); font-weight: 500; line-height: 1.05; margin-top: 16px; color: #fff; letter-spacing: -0.01em; }
+  .flex-headline em { font-style: italic; color: var(--gold-soft); }
+  .flex-body { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,0.82); margin-top: 22px; max-width: 520px; }
+  .flex-points { display: flex; flex-direction: column; gap: 24px; }
+  .flex-point { padding: 22px 24px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-left: 3px solid var(--gold); border-radius: 2px; }
+  .flex-point .label { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: #fff; }
+  .flex-point .label .num { color: var(--gold); margin-right: 6px; }
+  .flex-point p { font-size: 14px; color: rgba(255,255,255,0.72); margin-top: 6px; line-height: 1.6; }
+  .flex-closing { grid-column: 1 / -1; margin-top: 28px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--gold-soft); text-align: center; }
+
+  @media (max-width: 980px) {
+    .flex-inner { grid-template-columns: 1fr; gap: 36px; }
+  }
+  @media (max-width: 640px) {
+    .flex-section { padding: 56px 24px; }
+    .flex-closing { font-size: 18px; }
+  }
 </style>
 </head>
 <body>
@@ -91,10 +158,7 @@
 <!-- ============ NAV ============ -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="logo">
-      <span class="logo-mark">A</span>
-      Africrest <span class="logo-sub">PROPERTIES</span>
-    </a>
+    <a href="index.html" class="logo"><img src="africrest-logo.png" alt="Africrest Properties" class="logo-img"></a>
     <div class="nav-links">
       <a href="buildings.html">Buildings</a>
       <a href="units.html">Available units</a>
@@ -162,37 +226,37 @@
 
     <div class="building-grid">
       <a href="building.html" class="b-card">
-        <div class="b-img"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600" alt="The Maestro"><span class="b-badge">New</span><span class="b-area-tag">Sandton</span></div>
+        <div class="b-img"><img src="images/Cover-Photo-A.webp" alt="The Maestro"><span class="b-badge">New</span><span class="b-area-tag">Sandton</span></div>
         <div class="b-body"><div class="b-name">The Maestro</div><div class="b-addr">155 5th Street</div>
           <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R7,190</strong></div><span class="b-avail hot">4 units available</span></div>
         </div>
       </a>
       <a href="building.html" class="b-card">
-        <div class="b-img"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600" alt="The Astra"><span class="b-badge">New</span><span class="b-area-tag">Sandton</span></div>
+        <div class="b-img"><img src="images/Cover-Photo-B.webp" alt="The Astra"><span class="b-badge">New</span><span class="b-area-tag">Sandton</span></div>
         <div class="b-body"><div class="b-name">The Astra</div><div class="b-addr">166 Grayston Drive</div>
           <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R6,390</strong></div><span class="b-avail">2 units available</span></div>
         </div>
       </a>
       <a href="building.html" class="b-card">
-        <div class="b-img"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600" alt="The Galileo"><span class="b-area-tag">Bryanston</span></div>
+        <div class="b-img"><img src="images/Galileo1.png" alt="The Galileo"><span class="b-area-tag">Bryanston</span></div>
         <div class="b-body"><div class="b-name">The Galileo</div><div class="b-addr">23 Hobart Road</div>
           <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R6,590</strong></div><span class="b-avail">3 units available</span></div>
         </div>
       </a>
       <a href="building.html" class="b-card">
-        <div class="b-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600" alt="The Encore"><span class="b-area-tag">Bryanston</span></div>
+        <div class="b-img"><img src="images/africrest_image.webp" alt="The Encore"><span class="b-area-tag">Bryanston</span></div>
         <div class="b-body"><div class="b-name">The Encore</div><div class="b-addr">13 Sloane Street</div>
           <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R6,590</strong></div><span class="b-avail zero">Waitlist only</span></div>
         </div>
       </a>
       <a href="building.html" class="b-card">
-        <div class="b-img"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600" alt="The Silo"><span class="b-badge">New</span><span class="b-area-tag">Sunninghill</span></div>
+        <div class="b-img"><img src="images/silo_222-1.webp" alt="The Silo"><span class="b-badge">New</span><span class="b-area-tag">Sunninghill</span></div>
         <div class="b-body"><div class="b-name">The Silo</div><div class="b-addr">18 Eglin Road</div>
           <div class="b-row"><div class="b-price"><small>Rent from</small><strong>R5,590</strong></div><span class="b-avail hot">6 units available</span></div>
         </div>
       </a>
       <a href="building.html" class="b-card">
-        <div class="b-img"><img src="https://images.unsplash.com/photo-1515263487990-61b07816b324?w=600" alt="The Leo"><span class="b-area-tag">Marshalltown</span></div>
+        <div class="b-img"><img src="images/the-leo-1.webp" alt="The Leo"><span class="b-area-tag">Marshalltown</span></div>
         <div class="b-body"><div class="b-name">The Leo</div><div class="b-addr">162 Anderson Street</div>
           <div class="b-row"><div class="b-price"><small>From</small><strong>R3,990</strong></div><span class="b-avail hot">8 units available</span></div>
         </div>
@@ -223,28 +287,28 @@
 
     <div class="unit-grid">
       <a href="unit.html" class="u-card">
-        <div class="u-img"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400" alt="Unit"><span class="u-tag">Move-in ready</span></div>
+        <div class="u-img"><img src="images/Beautiful-1-Bed-at-The-Encore.webp" alt="Unit"><span class="u-tag">Move-in ready</span></div>
         <div class="u-body"><div class="u-name">The Maestro · Sandton</div><div class="u-type">1 Bedroom · #304</div>
           <div class="u-meta"><span>42m²</span><span>3rd floor</span><span>North-facing</span></div>
           <div class="u-foot"><div class="u-rent">R7,190<small>/mo</small></div><span class="u-cta">View →</span></div>
         </div>
       </a>
       <a href="unit.html" class="u-card">
-        <div class="u-img"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400" alt="Unit"><span class="u-tag">Available 1 Jun</span></div>
+        <div class="u-img"><img src="images/The-Encore-Studio-Apartment-1.webp" alt="Unit"><span class="u-tag">Available 1 Jun</span></div>
         <div class="u-body"><div class="u-name">The Silo · Sunninghill</div><div class="u-type">Studio · #208</div>
           <div class="u-meta"><span>28m²</span><span>2nd floor</span><span>Balcony</span></div>
           <div class="u-foot"><div class="u-rent">R5,590<small>/mo</small></div><span class="u-cta">View →</span></div>
         </div>
       </a>
       <a href="unit.html" class="u-card">
-        <div class="u-img"><img src="https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=400" alt="Unit"><span class="u-tag">Move-in ready</span></div>
+        <div class="u-img"><img src="images/The-Encore-Living-Space.webp" alt="Unit"><span class="u-tag">Move-in ready</span></div>
         <div class="u-body"><div class="u-name">The Leo · Marshalltown</div><div class="u-type">Bachelor · #512</div>
           <div class="u-meta"><span>32m²</span><span>5th floor</span><span>City view</span></div>
           <div class="u-foot"><div class="u-rent">R3,990<small>/mo</small></div><span class="u-cta">View →</span></div>
         </div>
       </a>
       <a href="unit.html" class="u-card">
-        <div class="u-img"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400" alt="Unit"><span class="u-tag">2 left</span></div>
+        <div class="u-img"><img src="images/The-Encore-1-Bed-Kitchen.webp" alt="Unit"><span class="u-tag">2 left</span></div>
         <div class="u-body"><div class="u-name">The Galileo · Bryanston</div><div class="u-type">1 Bedroom · #115</div>
           <div class="u-meta"><span>48m²</span><span>1st floor</span><span>Garden</span></div>
           <div class="u-foot"><div class="u-rent">R6,790<small>/mo</small></div><span class="u-cta">View →</span></div>
@@ -255,6 +319,32 @@
     <div class="units-foot">
       <a href="units.html" class="btn btn-outline-gold">Browse all available units →</a>
     </div>
+  </div>
+</section>
+
+<!-- ============ FLEX ============ -->
+<section id="flex" class="flex-section">
+  <div class="flex-inner">
+    <div>
+      <span class="flex-eyebrow">The FLEX advantage</span>
+      <h2 class="flex-headline">Move between our buildings, <em>free</em>.</h2>
+      <p class="flex-body">Your job changes. Your relationship changes. Your commute changes. With FLEX, your apartment doesn't have to be the thing holding you in place — relocate to any of our 15 estates across Joburg, mid-lease, no penalty.</p>
+    </div>
+    <div class="flex-points">
+      <div class="flex-point">
+        <div class="label"><span class="num">01</span>Free transfers</div>
+        <p>No early-exit fees. No double rent. No forfeited deposit.</p>
+      </div>
+      <div class="flex-point">
+        <div class="label"><span class="num">02</span>15 buildings, 9 areas</div>
+        <p>The full portfolio becomes your option set.</p>
+      </div>
+      <div class="flex-point">
+        <div class="label"><span class="num">03</span>Mid-lease movement</div>
+        <p>You move when life changes, not when your contract ends.</p>
+      </div>
+    </div>
+    <div class="flex-closing">The thing other landlords penalise. We built it into the lease.</div>
   </div>
 </section>
 
@@ -303,10 +393,7 @@
 <footer id="contact">
   <div class="foot-inner">
     <div>
-      <a href="index.html" class="logo foot-logo">
-        <span class="logo-mark">A</span>
-        Africrest <span class="logo-sub">PROPERTIES</span>
-      </a>
+      <a href="index.html" class="logo foot-logo"><img src="africrest-logo.png" alt="Africrest Properties" class="logo-img"></a>
       <p style="max-width: 320px; line-height: 1.7;">15 lifestyle estates across Johannesburg. Built, owned and managed by Africrest.</p>
       <div style="margin-top: 18px;">
         <a href="#">Instagram</a> · <a href="#">Facebook</a> · <a href="#">YouTube</a> · <a href="#">LinkedIn</a>

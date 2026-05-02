@@ -77,7 +77,20 @@
   .two-col-text { padding: 80px 64px; }
   .two-col-text h2 { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 500; color: var(--ink); }
   .two-col-text p { font-size: 15px; line-height: 1.8; color: var(--muted); margin-top: 16px; max-width: 480px; }
-  .two-col-img { background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=900') center/cover; min-height: 480px; }
+  .two-col-img { background: url('images/The-Encore-Living-Room.webp') center/cover; min-height: 480px; }
+
+  /* FLEX section */
+  .flex-about { background: var(--ink); color: #fff; padding: 96px 32px; border-bottom: 4px solid var(--gold); }
+  .flex-about-inner { max-width: 880px; margin: 0 auto; }
+  .flex-about .label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .flex-about h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4.4vw, 56px); font-weight: 500; line-height: 1.08; margin-top: 16px; color: #fff; }
+  .flex-about .lead { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; line-height: 1.5; color: var(--gold-soft); margin-top: 22px; max-width: 720px; }
+  .flex-about p { font-size: 16px; line-height: 1.85; color: rgba(255,255,255,0.82); margin-top: 22px; }
+  .flex-about .closing { margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.12); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--gold-soft); text-align: center; }
+  @media (max-width: 640px) {
+    .flex-about { padding: 64px 24px; }
+    .flex-about .lead { font-size: 18px; }
+  }
 
   /* CTA */
   .about-cta { background: var(--cream); padding: 80px 32px; text-align: center; }
@@ -107,7 +120,7 @@
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="logo"><span class="logo-mark">A</span>Africrest <span class="logo-sub">PROPERTIES</span></a>
+    <a href="index.html" class="logo"><img src="africrest-logo.png" alt="Africrest Properties" class="logo-img"></a>
     <div class="nav-links">
       <a href="buildings.html">Buildings</a>
       <a href="units.html">Available units</a>
@@ -179,6 +192,18 @@
   <div class="two-col-img"></div>
 </section>
 
+<!-- FLEX -->
+<section id="flex" class="flex-about">
+  <div class="flex-about-inner">
+    <span class="label">Why we built FLEX</span>
+    <h2>Renting shouldn't lock you in place.</h2>
+    <p class="lead">Most landlords penalise movement. We don't.</p>
+    <p>Because Africrest owns and manages every building, we allow residents to move across the portfolio instead of locking them into one location.</p>
+    <p>New job. New area. New situation. We move you.</p>
+    <div class="closing">The thing other landlords penalise. We built it into the lease.</div>
+  </div>
+</section>
+
 <!-- Recognition (honest, demo-safe) -->
 <section class="recognition">
   <div class="recog-inner">
@@ -231,7 +256,7 @@
 <footer>
   <div class="foot-inner">
     <div>
-      <a href="index.html" class="logo foot-logo"><span class="logo-mark">A</span>Africrest <span class="logo-sub">PROPERTIES</span></a>
+      <a href="index.html" class="logo foot-logo"><img src="africrest-logo.png" alt="Africrest Properties" class="logo-img"></a>
       <p style="max-width: 320px; line-height: 1.7;">15 lifestyle estates across Johannesburg.</p>
     </div>
     <div><h4>Buildings</h4><ul><li><a href="buildings.html">All buildings</a></li><li><a href="buildings.html">Sandton (4)</a></li></ul></div>

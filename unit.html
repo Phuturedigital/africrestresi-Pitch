@@ -80,6 +80,14 @@
   .other-units { background: var(--cream); padding: 64px 32px; }
   .other-units .unit-grid { grid-template-columns: repeat(3, 1fr); }
 
+  /* FLEX sidebar card */
+  .flex-card { background: var(--ink); color: #fff; border-radius: 4px; padding: 24px 26px; margin-top: 16px; border-left: 3px solid var(--gold); }
+  .flex-card .label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .flex-card .title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; color: #fff; margin-top: 8px; line-height: 1.15; }
+  .flex-card p { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.78); margin-top: 10px; }
+  .flex-card a { color: var(--gold-soft); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 14px; display: inline-block; border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+  .flex-card a:hover { color: var(--gold); }
+
   @media (max-width: 980px) {
     .unit-layout { grid-template-columns: 1fr; gap: 32px; padding: 32px 24px; }
     .unit-aside { position: static; }
@@ -102,7 +110,7 @@
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="logo"><span class="logo-mark">A</span>Africrest <span class="logo-sub">PROPERTIES</span></a>
+    <a href="index.html" class="logo"><img src="africrest-logo.png" alt="Africrest Properties" class="logo-img"></a>
     <div class="nav-links">
       <a href="buildings.html">Buildings</a>
       <a href="units.html" class="active">Available units</a>
@@ -118,11 +126,11 @@
   <div class="unit-hero-inner">
     <div class="crumb-light"><a href="index.html">Home</a> · <a href="units.html">Units</a> · <a href="building.html">The Maestro</a> · #304</div>
     <div class="gallery-hero">
-      <div style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=900')"></div>
-      <div style="background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600')"></div>
-      <div style="background-image: url('https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=600')"></div>
-      <div style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600')"></div>
-      <div class="more" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600')"></div>
+      <div style="background-image: url('images/Beautiful-1-Bed-at-The-Encore.webp')"></div>
+      <div style="background-image: url('images/The-Encore-1-Bed-Kitchen.webp')"></div>
+      <div style="background-image: url('images/The-Encore-Living-Space.webp')"></div>
+      <div style="background-image: url('images/The-Encore-Studio-Apartment-1.webp')"></div>
+      <div class="more" style="background-image: url('images/Cover-Photo-A.webp')"></div>
     </div>
   </div>
 </section>
@@ -217,8 +225,17 @@
         <a href="apply.html" class="btn btn-primary">Apply for this unit</a>
         <a href="contact.html" class="btn btn-outline-dark">Book a viewing</a>
       </div>
+    </div>
 
-      <hr>
+    <div class="flex-card">
+      <span class="label">FLEX</span>
+      <div class="title">Don't love this unit later? Move free.</div>
+      <p>Move to any of our buildings, free of penalty, during your lease. Your lease stays within the portfolio.</p>
+      <a href="about.html#flex">How FLEX works →</a>
+    </div>
+
+    <div class="cta-card" style="margin-top: 16px;">
+      <hr style="margin-top: 0;">
 
       <div class="cta-meta">
         <div><strong>Walk-in viewings:</strong><br/>Weekdays 9am–6pm<br/>Saturdays 9am–2pm</div>
@@ -237,9 +254,9 @@
       <a href="building.html" style="font-size: 13px; color: var(--ink); text-decoration: underline;">View building →</a>
     </div>
     <div class="unit-grid">
-      <a href="unit.html" class="u-card light"><div class="u-img"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400" alt=""><span class="u-tag">Available 1 Jun</span></div><div class="u-body"><div class="u-name">Unit #506 · 5th floor</div><div class="u-type">Studio</div><div class="u-meta"><span>32m²</span><span>City view</span></div><div class="u-foot"><div class="u-rent">R7,290<small>/mo</small></div><span class="u-cta">View →</span></div></div></a>
-      <a href="unit.html" class="u-card light"><div class="u-img"><img src="https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=400" alt=""><span class="u-tag">Move-in ready</span></div><div class="u-body"><div class="u-name">Unit #211 · 2nd floor</div><div class="u-type">1 Bedroom</div><div class="u-meta"><span>44m²</span><span>Pool view</span></div><div class="u-foot"><div class="u-rent">R8,490<small>/mo</small></div><span class="u-cta">View →</span></div></div></a>
-      <a href="unit.html" class="u-card light"><div class="u-img"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400" alt=""><span class="u-tag">Available 15 Jun</span></div><div class="u-body"><div class="u-name">Unit #702 · 7th floor</div><div class="u-type">2 Bedroom</div><div class="u-meta"><span>68m²</span><span>2 Bath</span></div><div class="u-foot"><div class="u-rent">R11,290<small>/mo</small></div><span class="u-cta">View →</span></div></div></a>
+      <a href="unit.html" class="u-card light"><div class="u-img"><img src="images/The-Encore-Studio-Apartment-1.webp" alt=""><span class="u-tag">Available 1 Jun</span></div><div class="u-body"><div class="u-name">Unit #506 · 5th floor</div><div class="u-type">Studio</div><div class="u-meta"><span>32m²</span><span>City view</span></div><div class="u-foot"><div class="u-rent">R7,290<small>/mo</small></div><span class="u-cta">View →</span></div></div></a>
+      <a href="unit.html" class="u-card light"><div class="u-img"><img src="images/The-Encore-Living-Space.webp" alt=""><span class="u-tag">Move-in ready</span></div><div class="u-body"><div class="u-name">Unit #211 · 2nd floor</div><div class="u-type">1 Bedroom</div><div class="u-meta"><span>44m²</span><span>Pool view</span></div><div class="u-foot"><div class="u-rent">R8,490<small>/mo</small></div><span class="u-cta">View →</span></div></div></a>
+      <a href="unit.html" class="u-card light"><div class="u-img"><img src="images/The-Encore-1-Bed-Kitchen.webp" alt=""><span class="u-tag">Available 15 Jun</span></div><div class="u-body"><div class="u-name">Unit #702 · 7th floor</div><div class="u-type">2 Bedroom</div><div class="u-meta"><span>68m²</span><span>2 Bath</span></div><div class="u-foot"><div class="u-rent">R11,290<small>/mo</small></div><span class="u-cta">View →</span></div></div></a>
     </div>
   </div>
 </section>
@@ -247,7 +264,7 @@
 <footer>
   <div class="foot-inner">
     <div>
-      <a href="index.html" class="logo foot-logo"><span class="logo-mark">A</span>Africrest <span class="logo-sub">PROPERTIES</span></a>
+      <a href="index.html" class="logo foot-logo"><img src="africrest-logo.png" alt="Africrest Properties" class="logo-img"></a>
       <p style="max-width: 320px; line-height: 1.7;">15 lifestyle estates across Johannesburg.</p>
     </div>
     <div><h4>Buildings</h4><ul><li><a href="buildings.html">All buildings</a></li><li><a href="buildings.html">Sandton (4)</a></li></ul></div>

@@ -40,9 +40,9 @@ img { max-width: 100%; display: block; }
   display: flex; align-items: center; justify-content: space-between;
   padding: 14px 32px;
 }
-.logo { display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-size: 22px; letter-spacing: 0.02em; }
-.logo-mark { width: 32px; height: 32px; border: 1.5px solid var(--gold); border-radius: 50%; display: grid; place-items: center; font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--gold); }
-.logo-sub { opacity: 0.5; font-size: 13px; letter-spacing: 0.18em; margin-left: 4px; }
+.logo { display: inline-flex; align-items: center; }
+.logo-img { height: 44px; width: auto; display: block; }
+.foot-logo .logo-img { height: 48px; }
 .nav-links { display: flex; align-items: center; gap: 28px; font-size: 14px; }
 .nav-links a { opacity: 0.85; transition: opacity .15s; }
 .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--gold-soft); }
