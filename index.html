@@ -3,7 +3,35 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Africrest Properties — Find your home in Joburg</title>
+<title>Africrest · 15 lifestyle estates in Joburg · FLEX between any of them, free</title>
+<meta name="description" content="Africrest builds, owns and manages 15 lifestyle estates across Joburg. Live availability, 4-step application, and FLEX — free building-to-building transfers, mid-lease." />
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Africrest Properties">
+<meta property="og:title" content="Africrest · 15 lifestyle estates in Joburg, with FLEX">
+<meta property="og:description" content="Built, owned and managed by Africrest. Move between any of our 15 buildings free, mid-lease.">
+<meta property="og:url" content="https://africrest-concept.phuturedigital.co.za/">
+<meta property="og:image" content="https://africrest-concept.phuturedigital.co.za/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "Africrest Properties",
+  "description": "Africrest builds, owns and manages 15 lifestyle estates across Joburg. FLEX policy allows residents to move between buildings free of penalty, mid-lease.",
+  "url": "https://africrest-concept.phuturedigital.co.za/",
+  "areaServed": [
+    "Sandton", "Bryanston", "Sunninghill", "Ferndale",
+    "Waverley", "Oaklands", "Milpark", "Marshalltown", "Bramley"
+  ],
+  "knowsAbout": ["Built-to-rent apartments", "Multi-family residential", "FLEX inter-building transfers"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Johannesburg",
+    "addressRegion": "Gauteng",
+    "addressCountry": "ZA"
+  }
+}
+</script>
 <link rel="stylesheet" href="styles.css" />
 <style>
   /* ---------- HERO ---------- */
@@ -67,6 +95,19 @@
   .stat .l { font-size: 12px; color: var(--muted); margin-top: 2px; }
   .about-img { background: url('images/galileo-06.webp') center/cover; min-height: 480px; }
 
+  /* FLEX advantage */
+  .flex-section { background: var(--ink); color: #fff; padding: 80px 32px; border-top: 4px solid var(--gold); }
+  .flex-inner { max-width: 1280px; margin: 0 auto; }
+  .flex-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: start; }
+  .flex-eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 18px; }
+  .flex-h { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4.6vw, 56px); font-weight: 500; line-height: 1.05; color: #fff; letter-spacing: -0.005em; }
+  .flex-h em { font-style: italic; color: var(--gold); }
+  .flex-lead { margin-top: 22px; font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.85); max-width: 480px; }
+  .flex-reasons { display: flex; flex-direction: column; gap: 32px; }
+  .flex-reason h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--gold); font-weight: 500; line-height: 1.15; margin-bottom: 8px; }
+  .flex-reason p { font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.78); max-width: 460px; }
+  .flex-quote { margin-top: 56px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.12); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--gold); text-align: right; }
+
   @media (max-width: 980px) {
     .value-inner { grid-template-columns: repeat(2, 1fr); gap: 32px; }
     .apply-grid { grid-template-columns: repeat(2, 1fr); }
@@ -76,11 +117,21 @@
     .about-img { min-height: 320px; }
     .search-bar { grid-template-columns: 1fr 1fr; }
     .search-submit { grid-column: 1 / -1; padding: 14px; }
+    .flex-grid { grid-template-columns: 1fr; gap: 36px; }
+    .flex-quote { text-align: left; }
   }
   @media (max-width: 640px) {
     .apply-grid, .value-inner { grid-template-columns: 1fr; }
     .a-step { border-right: none; border-bottom: 1px solid var(--line); }
     .a-step:last-child { border-bottom: none; }
+    .flex-section { padding: 44px 20px !important; }
+    .flex-grid { gap: 24px; }
+    .flex-eyebrow { margin-bottom: 12px; }
+    .flex-lead { font-size: 14px; margin-top: 14px; }
+    .flex-reasons { gap: 22px; }
+    .flex-reason h3 { font-size: 18px; margin-bottom: 4px; }
+    .flex-reason p { font-size: 13px; line-height: 1.55; }
+    .flex-quote { font-size: 16px; margin-top: 28px; padding-top: 20px; }
   }
 </style>
 </head>
@@ -202,6 +253,34 @@
     <div style="text-align: center; margin-top: 32px;">
       <a href="buildings.html" class="btn btn-outline-dark">View all 15 buildings →</a>
     </div>
+  </div>
+</section>
+
+<!-- ============ FLEX ADVANTAGE ============ -->
+<section class="flex-section">
+  <div class="flex-inner">
+    <div class="flex-grid">
+      <div class="flex-intro">
+        <div class="flex-eyebrow">The FLEX advantage</div>
+        <h2 class="flex-h">Move between our buildings, <em>free</em>.</h2>
+        <p class="flex-lead">Your job changes. Your relationship changes. Your commute changes. With FLEX, your apartment doesn't have to be the thing holding you in place — relocate to any of our 15 estates across Joburg, mid-lease, no penalty.</p>
+      </div>
+      <div class="flex-reasons">
+        <div class="flex-reason">
+          <h3>01 · Free transfers</h3>
+          <p>No early-exit fees. No double rent. No forfeited deposit. We move you, you keep your spot in our portfolio.</p>
+        </div>
+        <div class="flex-reason">
+          <h3>02 · 15 buildings, 9 areas</h3>
+          <p>Sandton, Bryanston, Sunninghill, Ferndale, Waverley, Oaklands, Milpark, Marshalltown, Bramley. The whole portfolio is your option set.</p>
+        </div>
+        <div class="flex-reason">
+          <h3>03 · Mid-lease, not just at renewal</h3>
+          <p>Life doesn't wait for your contract to end. Neither do we. Tell your on-site team — we coordinate the rest.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex-quote">"The thing other landlords penalise. We built it into the lease."</div>
   </div>
 </section>
 

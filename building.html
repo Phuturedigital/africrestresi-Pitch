@@ -4,6 +4,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Maestro — Africrest Properties</title>
+<meta name="description" content="The Maestro · 86-unit lifestyle estate on 5th Street, Sandton. Studios, 1 & 2 bedroom apartments. Every lease includes FLEX — free building-to-building transfers across all 15 Africrest estates, mid-lease." />
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Africrest Properties">
+<meta property="og:title" content="The Maestro · Africrest Sandton · with FLEX">
+<meta property="og:description" content="Lifestyle estate on 5th Street, Sandton. Every lease includes FLEX — move free to any of our 14 other buildings, mid-lease.">
+<meta property="og:url" content="https://africrest-concept.phuturedigital.co.za/building.html">
+<meta property="og:image" content="https://africrest-concept.phuturedigital.co.za/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="styles.css" />
 <style>
   /* Building header — image-led */
@@ -72,6 +80,18 @@
   .other-buildings { padding: 64px 32px; background: var(--cream); }
   .other-buildings .building-grid { grid-template-columns: repeat(3, 1fr); }
 
+  /* FLEX strip */
+  .flex-strip { background: var(--cream); border-bottom: 1px solid var(--line); padding: 0 32px; }
+  .flex-strip-inner { max-width: 1280px; margin: 0 auto; padding: 18px 0 18px 24px; border-left: 3px solid var(--gold); font-size: 14px; color: var(--ink); line-height: 1.55; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .flex-strip-icon { color: var(--gold); font-size: 16px; flex-shrink: 0; }
+  .flex-strip-inner strong { font-weight: 600; }
+  .flex-strip-inner a { color: var(--ink); text-decoration: underline; font-weight: 500; white-space: nowrap; }
+  .flex-strip-inner a:hover { color: var(--gold); }
+  @media (max-width: 640px) {
+    .flex-strip { padding: 0 18px; }
+    .flex-strip-inner { padding: 14px 0 14px 16px; font-size: 13px; gap: 8px; }
+  }
+
   @media (max-width: 980px) {
     .b-layout { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px; }
     .sidebar-card { position: static; }
@@ -123,6 +143,15 @@
     </div>
   </div>
 </section>
+
+<!-- FLEX strip -->
+<div class="flex-strip">
+  <div class="flex-strip-inner">
+    <span class="flex-strip-icon">◆</span>
+    <span><strong>FLEX is included with every lease.</strong> If life changes after you move in, you can transfer to any of our other 14 buildings — Sandton to Marshalltown, free of penalty.</span>
+    <a href="about.html#flex">How FLEX works →</a>
+  </div>
+</div>
 
 <!-- Sticky info bar -->
 <div class="info-bar">
