@@ -235,12 +235,12 @@ section.section { padding: 80px 32px; }
 }
 .pd-network-grid {
   list-style: none; margin: 0 0 28px; padding: 0;
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(178px, 1fr)); gap: 10px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;
 }
 .pd-network-card { margin: 0; }
 .pd-network-card a {
-  display: flex; flex-direction: column; gap: 3px; height: 100%;
-  padding: 15px 16px 14px; text-decoration: none;
+  display: flex; flex-direction: column; height: 100%;
+  padding: 0; overflow: hidden; text-decoration: none;
   background: #143a35; border: 1px solid rgba(255,255,255,.14); border-radius: 4px;
   transition: border-color .18s ease, transform .18s ease, background .18s ease;
 }
@@ -249,7 +249,15 @@ section.section { padding: 80px 32px; }
   border-color: #c9a449; background: #1a463f; transform: translateY(-2px);
 }
 .pd-network-card a:focus-visible { outline: 2px solid #c9a449; outline-offset: 2px; }
-.pd-network-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--pd-dot); margin-bottom: 9px; }
+/* height:auto is required, not optional: the width/height attributes on the <img>
+   would otherwise pin the height and defeat aspect-ratio. */
+.pd-network-thumb {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: 16 / 10; object-fit: cover; object-position: top center;
+  background: #1a463f; border-bottom: 1px solid rgba(255,255,255,.14);
+}
+.pd-network-card a:hover .pd-network-thumb { opacity: .92; }
+.pd-network-body { display: flex; flex-direction: column; gap: 3px; flex: 1; padding: 13px 15px 14px; }
 .pd-network-name { color: #ffffff; font-size: 14.5px; font-weight: 650; line-height: 1.25; }
 .pd-network-sector { color: rgba(255,255,255,.68); font-size: 12px; line-height: 1.4; }
 .pd-network-go {
