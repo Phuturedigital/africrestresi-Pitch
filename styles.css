@@ -235,7 +235,10 @@ section.section { padding: 80px 32px; }
 }
 .pd-network-grid {
   list-style: none; margin: 0 0 28px; padding: 0;
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;
+  /* 150px min keeps all four on one row on desktop (auto-fit collapses the empty
+     tracks), goes 2-up on phones instead of a ~1800px stack, and avoids the
+     awkward 3+1 wrap a 200px min produces around tablet width. */
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px;
 }
 .pd-network-card { margin: 0; }
 .pd-network-card a {
