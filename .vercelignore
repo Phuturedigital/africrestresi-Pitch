@@ -1,4 +1,5 @@
 # Exclude private pitch materials from the public deploy
+africrest-pitch-deck.html
 email-to-justin.md
 outreach-package.md
 scrape-africrest.js

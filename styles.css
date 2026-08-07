@@ -209,3 +209,78 @@ section.section { padding: 80px 32px; }
   section.section { padding: 56px 24px; }
   .page-header { padding: 40px 24px 56px; }
 }
+
+/* pd-network:start */
+/* Shared cross-link block across the Phuture Digital concept sites. Same markup and
+   rhythm everywhere; the palette below maps this site's own tokens onto it. */
+.pd-network {
+  background: #0f2e2a;
+  color: rgba(255,255,255,.68);
+  font-family: inherit;
+  padding: clamp(34px, 4.4vw, 52px) clamp(20px, 3.6vw, 48px);
+}
+.pd-network-inner { max-width: 1080px; margin: 0 auto; }
+.pd-network-eyebrow {
+  font-size: 10.5px; letter-spacing: .15em; text-transform: uppercase;
+  color: #c9a449; font-weight: 700; margin: 0 0 12px;
+}
+.pd-network-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(21px, 2.5vw, 27px); line-height: 1.15; letter-spacing: -.015em;
+  color: #ffffff; font-weight: 700; margin: 0 0 10px; text-wrap: balance;
+}
+.pd-network-lede {
+  font-size: 14.5px; line-height: 1.6; max-width: 56ch;
+  color: rgba(255,255,255,.68); margin: 0 0 26px;
+}
+.pd-network-grid {
+  list-style: none; margin: 0 0 28px; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(178px, 1fr)); gap: 10px;
+}
+.pd-network-card { margin: 0; }
+.pd-network-card a {
+  display: flex; flex-direction: column; gap: 3px; height: 100%;
+  padding: 15px 16px 14px; text-decoration: none;
+  background: #143a35; border: 1px solid rgba(255,255,255,.14); border-radius: 4px;
+  transition: border-color .18s ease, transform .18s ease, background .18s ease;
+}
+.pd-network-card a:hover,
+.pd-network-card a:focus-visible {
+  border-color: #c9a449; background: #1a463f; transform: translateY(-2px);
+}
+.pd-network-card a:focus-visible { outline: 2px solid #c9a449; outline-offset: 2px; }
+.pd-network-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--pd-dot); margin-bottom: 9px; }
+.pd-network-name { color: #ffffff; font-size: 14.5px; font-weight: 650; line-height: 1.25; }
+.pd-network-sector { color: rgba(255,255,255,.68); font-size: 12px; line-height: 1.4; }
+.pd-network-go {
+  color: #c9a449; font-size: 11px; letter-spacing: .05em; font-weight: 650;
+  margin-top: auto; padding-top: 11px;
+}
+.pd-network-cta {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px;
+  padding-top: 22px; border-top: 1px solid rgba(255,255,255,.14);
+}
+.pd-network-cta p { margin: 0 auto 0 0; font-size: 14px; color: #ffffff; font-weight: 600; }
+.pd-network-btn {
+  background: #c9a449; color: #0f2e2a; text-decoration: none;
+  padding: 10px 18px; border-radius: 4px; font-size: 13.5px; font-weight: 650;
+}
+.pd-network-btn:hover { opacity: .9; }
+.pd-network-link {
+  color: rgba(255,255,255,.68); text-decoration: none; font-size: 13px;
+  border-bottom: 1px solid rgba(255,255,255,.14); padding-bottom: 2px;
+}
+.pd-network-link:hover { color: #ffffff; }
+.pd-network-mark {
+  margin: 22px 0 0; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.14);
+  font-size: 11.5px; line-height: 1.55; color: rgba(255,255,255,.68); max-width: 72ch;
+}
+.pd-network-mark strong { color: #ffffff; font-weight: 650; }
+@media (max-width: 560px) {
+  .pd-network-cta p { margin-right: 0; width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pd-network-card a { transition: none; }
+  .pd-network-card a:hover { transform: none; }
+}
+/* pd-network:end */
